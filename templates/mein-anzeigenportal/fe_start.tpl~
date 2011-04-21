@@ -1,0 +1,174 @@
+<?php echo $this->doctype; ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>">
+<head>
+<base href="<?php echo $this->base; ?>"></base>
+<title><?php echo $this->pageTitle; ?> - <?php echo $this->mainTitle; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->charset; ?>" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="description" content="<?php echo $this->description; ?>" />
+<meta name="keywords" content="<?php echo $this->keywords; ?>" />
+<?php echo $this->robots; ?>
+<?php echo $this->framework; ?>
+<?php echo $this->stylesheets; ?>
+<?php echo $this->mooScripts; ?>
+<?php echo $this->head; ?>
+</head>
+
+<body id="top"<?php if ($this->class): ?> class="<?php echo $this->class; ?>"<?php endif; if ($this->onload): ?> onload="<?php echo $this->onload; ?>"<?php endif; ?>>
+   <div id="wrapper">
+       <div id="header">
+          <a href="." class="logo"><img src="images/logo.png" alt="mein-anzeigenportal"></a>
+	  <div id="topnavi">
+	      <ul>
+		  <li class="first"><a href="">Login</a></li>
+		  <li><a href="">Registirerung</a></li>
+		  <li class="last"><a href="">Hilfe</a></li>
+	      </ul>
+	  </div><!--.topnavi-->
+	  <div class="searchbar">
+	      <img src="images/lupe.png" alt="" class="lupe"/>
+	      <form action="." method="post" class="searchform">
+		 <formfield>
+		 <div class="keyword">
+		     <label for="searchkeyword">Begriff</label>
+		     <input name="keyword" value="" id="searchkeyword" class="text"/>
+		 </div>     
+		 <div class="where">
+		     <label for="searchwhere">Ort / PLZ</label>
+		     <input name="where" value="" id="searchwhere" class="text"/>
+		 </div> 
+		 <div class="radius">
+		     <label for="searchradius">Umkreis</label>
+		     <select name="radius" id="searchradius" class="select">
+			 <option value="0">+ 0km</option>
+			 <option value="50">+ 50km</option>
+			 <option value="100">+ 100km</option>
+			 <option value="150">+ 150km</option>
+			 <option value="200">+ 200km</option>
+			 <option value="250">+ 250km</option>
+			 <option value="300">+ 300km</option>
+			 <option value="400">+ 400km</option>
+			 <option value="500">+ 500km</option>
+		     </select>
+		 </div>
+		 <div class="categories">
+		     <label for="searchcategories">in</label>
+		     <select name="categories" id="searchcategories" class="select">
+			 <option value="">alle Kategorien</option>
+			 <option value="tiere-u-zubehoer">Tiere &amp; Zubehör</option>
+		     </select>
+		 </div>
+		 <input type="submit" name="submit" value="Suchen" class="submit"/>
+	      	 </formfield>
+	  </form>
+	  </div>
+	  <div id="tabnav">
+	      <ul>
+		  <li class="first active"><a href="">Angebote</a></li>
+		  <li><a href="">Gesuche</a></li>
+		  <li class="last extra"><a href=""><span class="bold">kostenlose</span> Anzeige aufgeben</a></li>
+	      </ul>
+	  </div><!--#tabnav-->
+	  <div id="breadcrumb">
+	      <ul>
+		  <li class="first">Sie befinden sich hier</li>
+		  <li><a href="">Startseite</a></li>
+		  <li><a href="">Eintrittskarten &amp; Tickets</a></li>
+		  <li class="last extra"><a href="">Konzerte</a></li>
+	      </ul>
+	  </div><!--#breadcrumb-->
+       </div><!--#header-->
+       <div id="main">
+	   <div class="sidebar_left">
+	       <div class="catnav">
+		   <h3>Kategorien</h3>
+		   <ul>
+		       <li><a href="ergebnisliste.html">Reisen</a></li>
+		       <li class="active"><a href="">Tiere &amp; Zucht</a>
+			   <ul>
+			       <li><a href="">Katzen</a></li>
+			       <li><a href="">Hunde</a></li>
+			       <li><a href="">Vögel</a></li>
+			       <li><a href="">Bienen</a></li>
+			       <li><a href="">Tierfutter</a></li>
+			       
+			   </ul>
+		       </li>
+		       <li><a href="">Haushalt</a></li>
+		       <li><a href="">Autos &amp; Motorräder</a></li>
+		   </ul>
+	       </div><!--.catnav-->
+	   </div><!--.sidebar_left-->
+	   <div class="content">
+	   
+	       <div class="boxlist">
+		   <ul>
+		       <li class="item">
+			    <div class="imgbox"><a href="" title="zu den Details dieser Anzeige"></a></div>
+			    <h3><a href="">kleine Schmusekatze wartet auf ...</a></h3>
+			    <div class="date">heute um 12:34</div>
+			    <div class="where">Putlitz (Prignitz)</div>
+			    <div class="price">VB</div>
+			    <div class="categories">Kategorien: <a href="">Tiere abzugeben</a></div>
+		       </li>
+		       <li class="item">
+			    <div class="imgbox"><a href="" title="zu den Details dieser Anzeige"></a></div>
+			    <h3><a href="">kleine Schmusekatze wartet auf ...</a></h3>
+			    <div class="date">heute um 12:34</div>
+			    <div class="where">Putlitz (Prignitz)</div>
+			    <div class="price">120 &euro;</div>
+			    <div class="categories">Kategorien: <a href="">Tiere abzugeben</a></div>
+		       </li>
+		       <li class="item">
+			    <div class="imgbox"><a href="" title="zu den Details dieser Anzeige"></a></div>
+			    <h3><a href="">kleine Schmusekatze wartet auf ...</a></h3>
+			    <div class="date">heute um 12:34</div>
+			    <div class="where">Putlitz (Prignitz)</div>
+			    <div class="price">12.000 &euro;</div>
+			    <div class="categories">Kategorien: <a href="">Tiere abzugeben</a></div>
+		       </li>
+		       <li class="item">
+			    <div class="imgbox"><a href="" title="zu den Details dieser Anzeige"></a></div>
+			    <h3><a href="">kleine Schmusekatze wartet auf ...</a></h3>
+			    <div class="date">heute um 12:34</div>
+			    <div class="where">Putlitz (Prignitz)</div>
+			    <div class="price">10.000 &euro; VB</div>
+			    <div class="categories">Kategorien: <a href="">Tiere abzugeben</a></div>
+		       </li>
+		       <li class="item">
+			    <div class="imgbox"><a href="" title="zu den Details dieser Anzeige"></a></div>
+			    <h3><a href="">kleine Schmusekatze wartet auf ...</a></h3>
+			    <div class="date">heute um 12:34</div>
+			    <div class="where">Putlitz (Prignitz)</div>
+			    <div class="price">VB</div>
+			    <div class="categories">Kategorien: <a href="">Tiere abzugeben</a></div>
+		       </li>
+		       <li class="item">
+			    <div class="imgbox"><a href="" title="zu den Details dieser Anzeige"></a></div>
+			    <h3><a href="">kleine Schmusekatze wartet auf ...</a></h3>
+			    <div class="date">heute um 12:34</div>
+			    <div class="where">Putlitz (Prignitz)</div>
+			    <div class="price">VB</div>
+			    <div class="categories">Kategorien: <a href="">Tiere abzugeben</a>, <a href="">Kleintiere</a>, <a href="">Katze</a></div>
+		       </li>
+		   </ul>
+	       </div><!--.itembox-->
+	   </div><!--.content-->
+       </div><!--#main-->
+       <div class="clear"></div>
+       <div id="footer">
+	   <div class="footernav">
+	       <ul>
+	           <li class="first"><a href="">Kontakt</a></li>
+		   <li><a href="">Impressum</a></li>
+		   <li><a href="">Allgemeine Geschäftsbedingungen (AGB)</a></li>
+		   <li><a href="">Datenschutzbestimmungen</a></li>
+
+	       </ul>
+	   </div><!--.footernav-->
+       </div><!--#footer-->
+   </div><!--#wrapper-->
+
+</body>
+</html>

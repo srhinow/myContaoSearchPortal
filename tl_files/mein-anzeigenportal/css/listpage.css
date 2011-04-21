@@ -1,0 +1,81 @@
+html,body{margin:0;padding:0;font-family:'Arial','Verdana',sans-serif;}
+a{color:#230099;text-decoration:none;}
+a:hover, a:focus{color:#8a0;text-decoration:underline;}
+a img{border:none;}
+#wrapper{width:1000px;margin:0 auto;padding:0;}
+#header{position:relative;margin:0;padding:0;height:234px;}
+a.logo{padding-top:30px;display:block;width:400px;}
+.searchbar{height:82px;width:100%;background-color:#88aa00;border:1px solid #0b7200;position:absolute;top:80px;z-index:100;-moz-border-radius:9px;-khtml-border-radius:9px;-webkit-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
+form.searchform{position:absolute;top:10px;left:130px;z-index:250;}
+form.searchform label{color:#fff;font-size:16px;font-weight:bold;display:block;}
+form.searchform input.text, form.searchform select.select{border:1px solid #0b7200;background-color:#fff;padding:3px;height:25px;width:200px;-moz-border-radius:9px;-khtml-border-radius:9px;-webkit-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
+form.searchform select.select{font-size:1.1em;height:33px;}
+form.searchform input.text:focus, form.searchform input.text:hover, form.searchform select.select:hover, form.searchform select.select:focus{background-color:#f8ffdb;}
+form.searchform select.select option{height:25px;line-height:30px;}
+form.searchform div.keyword, form.searchform div.where{width:220px;float:left;}
+form.searchform .radius{float:left;width:115px;}
+form.searchform .radius select{width:105px;}
+form.searchform .categories{float:left;width:200px;}
+form.searchform .categories select{width:190px;}
+form.searchform input.submit{border:2px solid #fff;background-color:#165016;color:#fff;padding:3px 10px;font-size:18px;margin-top:20px;-moz-border-radius:9px;-khtml-border-radius:9px;-webkit-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
+form.searchform input.submit:hover, form.searchform input.submit:focus{color:#88aa00;cursor:pointer;}
+#header .lupe{margin-top:10px;}
+#main .sidebar_left{width:206px;float:left;}
+#main .sidebar_left h3{font-size:16px;color:#fff;padding:3px 10px;margin:0;background-color:#8a0;border:1px solid #0b7200;-moz-border-radius:9px;-khtml-border-radius:9px;-webkit-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
+#main .content{margin:0 0 0 215px;}
+#footer{clear:both;margin:50px 0;border-top:1px solid #8a0;}
+.bold{font-weight:bold;}
+.clear{clear:both;}
+#topnavi{position:absolute;top:0;right:0;}
+#topnavi ul{margin:0;padding:0;list-style:none;}
+#topnavi ul li{float:left;margin:10px 0 0 0;padding:0 10px;border-right:1px solid #999;}
+#topnavi ul li.last{border:none;}
+#topnavi a, #topnavi span{font-size:0.8em;line-height:0.8em;text-decoration:none;}
+#topnavi a:hover, #topnavi a:focus{text-decoration:underline;color:#88aa00;}
+#tabnav{position:absolute;top:163px;left:220px;z-index:110;}
+#tabnav ul{margin:0;padding:0;list-style:none;}
+#tabnav ul li{margin:0 3px;padding:3px;float:left;background-color:#f8ffdb;border:1px solid #0b7200;-moz-border-radius-bottomright:9px;-moz-border-radius-bottomleft:9px;-khtml-border-radius-bottomright:9px;-khtml-border-radius-bottomleft:9px;-webkit-border-bottom-right-radius:9px;-webkit-border-bottom-left-radius:9px;-o-border-radius-bottomright:9px;-o-border-radius-bottomleft:9px;border-bottom-radius:9px;font-size:1.2em;}
+#tabnav li:hover, #tabnav li:focus{background-color:#D1E096;}
+#tabnav li.active{background-color:#8a0;border-top:1px solid #8a0;}
+#tabnav a{padding:0 30px;}
+#tabnav a, #tabnav span{color:#445500;text-decoration:none;}
+#tabnav li.active a, #tabnav li.active span{color:#f6ffd5;}
+#tabnav li.extra a, #tabnav li.extra span{color:#a02c2c;}
+#tabnav li a:hover, #tabnav li a:focus{color:#000;}
+#breadcrumb{position:absolute;left:210px;top:210px;}
+#breadcrumb ul{margin:0;padding:0;list-style:none;font-size:12px;}
+#breadcrumb li{float:left;background:url('../images/icon_sprite.png') no-repeat 0 3px transparent;margin:0;padding:0 5px 0 15px;}
+#breadcrumb li.first{background:none;}
+.catnav ul{margin:10px 0 0 0;padding:0;list-style:none;}
+.catnav li{background:url('../images/icon_sprite.png') no-repeat 5px -92px;padding:3px 0 3px 20px;font-size:14px;}
+.catnav li.active, .catnav li:hover, .catnav li:focus{background:url('../images/icon_sprite.png') no-repeat 5px -135px;padding:3px 0 3px 20px;font-size:14px;}
+.catnav li a{display:block;}
+.catnav li.active > a{color:#8a0;}
+.pagination{padding:20px 0 0 0;font-size:14px;}
+.pagination p{width:120px;float:left;margin:0;padding:2px 10px;}
+.pagination ul{margin:0;padding:0;list-style:none;}
+.pagination li{float:left;margin:0;padding:0;}
+.pagination a, .pagination span{padding:2px 10px;display:block;}
+.pagination .current{background-color:#8a0;color:#fff;}
+.pagination a.previous{background:url('../images/icon_sprite.png') no-repeat 0 -11px #fff;padding-left:15px;}
+.pagination a.next{background:url('../images/icon_sprite.png') no-repeat right 7px #fff;padding-right:32px;}
+.footernav{text-align:center;margin:10px 0;}
+.footernav ul{font-size:11px;margin:0;padding:0;list-style:none;}
+.footernav li{display:inline;padding:0 10px;border-left:1px solid #999;}
+.footernav li.first{border:none;}
+.tablelist table{margin:0;padding:0;border-width:0;border-top:1px solid #a0a0a0;border-collapse:collapse;border-spacing:0;width:100%;}
+.tablelist table tr{margin:0;padding:0;border-width:0;font-size:11px;vertical-align:top;}
+.tablelist a:visited{color:#909;text-decoration:none;}
+.tablelist a:hover{text-decoration:underline;}
+.tablelist table tr:hover, .tablelist table tr:focus{background-color:#F6F5F5;}
+.tablelist table td{padding:5px;border-width:0;margin:0;border-bottom:1px solid #a0a0a0;}
+.tablelist table h3{margin:0;padding:0;}
+.tablelist table td.imgbox{width:136px;}
+.tablelist table td.imgbox a{width:100px;height:72px;display:block;border:1px solid #D8D8D8;-moz-border-radius:9px;-khtml-border-radius:9px;-webkit-border-radius:9px;-o-border-radius:9px;border-radius:9px;background:url('../images/imglist_bg.gif') no-repeat center 15px #fff;}
+.tablelist table td.imgbox a:hover, .tablelist table td.imgbox a:focus{border:1px solid #8a0;}
+.tablelist table td.text{width:393px;}
+.tablelist table td.text p a, .tablelist table td.text .date a{color:#000;display:block;}
+.tablelist table td.address{width:126px;line-height:1.5em;}
+.tablelist table td.address a{color:#000;display:block;}
+.tablelist table td.price{width:90px;text-align:right;font-size:14px;font-weight:bold;color:#8a0;}
+.tablelist table td.price a{color:#8a0;display:block;}

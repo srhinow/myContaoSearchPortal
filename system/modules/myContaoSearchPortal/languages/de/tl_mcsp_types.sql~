@@ -1,0 +1,51 @@
+<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+
+/**
+ * Contao webCMS
+ *
+ * The TYPOlight webCMS is an accessible web content management system that 
+ * specializes in accessibility and generates W3C-compliant HTML code. It 
+ * provides a wide range of functionality to develop professional websites 
+ * including a built-in search engine, form generator, file and user manager, 
+ * CSS engine, multi-language support and many more. For more information and 
+ * additional TYPOlight applications like the TYPOlight MVC Framework please 
+ * visit the project website http://www.typolight.org.
+ *
+ * This file modifies the data container array of table tl_module.
+ *
+ * @copyright  Sven Rhinow 2010
+ * @author     Sven Rhinow <sven@sr-tag.de>
+ * @package    Geldkoffer
+ * @license    LGPL
+ * @filesource
+
+ */
+
+$GLOBALS['TL_LANG']['tl_gk_polls']['new']    = array('Neue Umfrage', 'Eine neue Umfrage anlegen');
+$GLOBALS['TL_LANG']['tl_gk_polls']['edit']   = array('Umfrage bearbeiten', 'Umfrage ID %s bearbeiten');
+$GLOBALS['TL_LANG']['tl_gk_polls']['copy']   = array('Umfrage duplizieren', 'Umfrage ID %s duplizieren');
+$GLOBALS['TL_LANG']['tl_gk_polls']['delete'] = array('Umfrage löschen', 'Umfrage ID %s löschen');
+$GLOBALS['TL_LANG']['tl_gk_polls']['show']   = array('Umfragedetails', 'Details von der Umfrage ID %s anzeigen');
+
+$GLOBALS['TL_LANG']['tl_gk_polls']['title']   = array('Headline', 'Wert z.B. "25% Rabat"');
+$GLOBALS['TL_LANG']['tl_gk_polls']['subtitle']   = array('Subline', 'Wofür, z.B. "auf einen Artikel"');
+$GLOBALS['TL_LANG']['tl_gk_polls']['linktext']   = array('interner Linktext', 'Mit diesem Text wird auf die Shopdetailseite verlinkt z.B. "Görtz Umfrage"');
+$GLOBALS['TL_LANG']['tl_gk_polls']['code']   = array('Umfragecode', 'z.B. "10004"');
+$GLOBALS['TL_LANG']['tl_gk_polls']['pic1']   = array('Bild', '');
+$GLOBALS['TL_LANG']['tl_gk_polls']['logoalttext']   = array('Logo-Alt-Text', 'wenn dieses Feld leer bleibt wird der Name des Anbieters angezeigt.');
+$GLOBALS['TL_LANG']['tl_gk_polls']['company']   = array('Anbieter', 'Firma die diesen Umfrage anbietet.');
+$GLOBALS['TL_LANG']['tl_gk_polls']['categories']   = array('Kategorien', 'Wählen Sie die Kategorien unter der dieser Umfrage erscheinen soll.');
+$GLOBALS['TL_LANG']['tl_gk_polls']['textlong']   = array('Detailtext', '');
+$GLOBALS['TL_LANG']['tl_gk_polls']['featured']   = array('Top Artikel', 'Flag um den Umfrage besonders hervorzuheben. Wird z.B. auf der Startseite für die neuesten und besten Umfragee verwenden.');
+$GLOBALS['TL_LANG']['tl_gk_polls']['tags']   = array('Tags', 'Tags je Umfrage zum danach suchen und für die tag-cloud');
+$GLOBALS['TL_LANG']['tl_gk_polls']['start']   = array('Laufzeit ab', 'Datum ab wann dieser Umfrage gültig ist');
+$GLOBALS['TL_LANG']['tl_gk_polls']['stop']   = array('Laufzeit bis', 'Datum bis wann dieser Umfrage gültig ist');
+$GLOBALS['TL_LANG']['tl_gk_polls']['termsofuse']   = array('Nutzungsbedingungen', 'Bedingungen um den Umfrage einlösen zu können');
+$GLOBALS['TL_LANG']['tl_gk_polls']['url']   = array('Externer Link', 'Wenn dieses Feld leer bleibt wird die URL des Anbieters genommen.');
+$GLOBALS['TL_LANG']['tl_gk_polls']['notice']   = array('Notiz zu dieser Umfrage', 'diese Notiz wird nur im Backend in der Übersicht und in der Bearbeitenansicht gezeigt.');
+
+$GLOBALS['TL_LANG']['tl_gk_polls']['meta_legend'] = 'Meta-Angaben';
+$GLOBALS['TL_LANG']['tl_gk_polls']['metatitle'] = array('Meta-Title','Wird als Seitentitel angezeigt.');
+$GLOBALS['TL_LANG']['tl_gk_polls']['metakeywords'] = array('Meta-Keywords','SEO: wird im Headbereich der Seite angezeigt.');
+$GLOBALS['TL_LANG']['tl_gk_polls']['metadescription'] = array('Meta-Description','SEO: wird im Headbereich der Seite angezeigt.');
+?>

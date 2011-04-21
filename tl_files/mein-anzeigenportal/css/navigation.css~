@@ -1,0 +1,213 @@
+/*-------------------------------------------*/
+#topnavi{
+   position:absolute;
+   top:0;
+   right:0;
+}
+#topnavi ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#topnavi ul li{
+    float:left;
+    margin:10px 0 0 0;
+    padding:0 10px;
+    border-right: 1px solid #999; 
+}
+#topnavi ul li.last{
+    border:none;
+}
+#topnavi a,
+#topnavi span{
+    font-size: 0.8em;
+    line-height: 0.8em;
+    text-decoration:none;
+}
+#topnavi a:hover,
+#topnavi a:focus{
+    text-decoration:underline;
+    color: #88aa00;
+}
+/*-------------------------------------------*/
+#tabnav{
+   position:absolute;
+   top:163px;
+   left:220px;
+   z-index:110;
+}
+#tabnav ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#tabnav ul li{
+    margin:0 3px;
+    padding:3px;
+    float:left;
+    background-color:#f8ffdb;
+    border:1px solid #0b7200;
+    -moz-border-radius-bottomright: 9px;
+    -moz-border-radius-bottomleft: 9px;
+    -khtml-border-radius-bottomright:9px;
+    -khtml-border-radius-bottomleft:9px;
+    -webkit-border-bottom-right-radius:9px;
+    -webkit-border-bottom-left-radius:9px;
+    -o-border-radius-bottomright:9px;
+    -o-border-radius-bottomleft:9px;
+    border-bottom-radius: 9px; 
+    font-size:1.2em;  
+}
+#tabnav li:hover,
+#tabnav li:focus{
+    background-color:#D1E096;
+}
+#tabnav li.active,
+#tabnav li.trail{
+    background-color:#8a0;
+    border-top:1px solid #8a0;
+}
+#tabnav a,
+#tabnav span.active{
+    padding:0 30px;
+}
+#tabnav a,
+#tabnav span.active{
+    color:#445500;
+    text-decoration:none;    
+}
+#tabnav li.active a,
+#tabnav li.active span.active,
+#tabnav li.trail a.trail{
+    color:#f6ffd5;
+}
+#tabnav li.extra a,
+#tabnav li.extra span{
+    color:#a02c2c;
+    font-weight:bold;
+}
+#tabnav li a:hover,
+#tabnav li a:focus{
+    color:#000;
+}
+/*-------------------------------------------*/
+#breadcrumb{
+    position:absolute;
+    left:225px;
+    top:210px;
+    font-size:12px;
+}
+#breadcrumb ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#breadcrumb li{
+    float:left;
+    background:url('../images/navi_icon_sprite.png') no-repeat 0 3px transparent;
+    margin:0;
+    padding:0 5px 0 15px;
+}
+#breadcrumb li.first{
+    background:none;
+}
+/*-------------------------------------------*/
+.catnav ul{
+    margin:10px 0 0 0;
+    padding:0;
+    list-style:none;
+}
+.catnav li{
+    overflow:hidden;
+    font-size:14px;
+    cursor:pointer;
+    color:#230099;
+    border-bottom:1px solid #8a0;
+    margin:0;
+    padding: 0;
+}
+.catnav li a,
+.catnav li span{
+    background:url('../images/navi_icon_sprite.png') no-repeat 3px -187px;
+    padding:4px 0 2px 20px;
+    display:block;
+    font-size:14px;
+}
+.catnav li a.active,
+.catnav li a:hover,
+.catnav li a:focus,
+.catnav li span{
+    background:url('../images/navi_icon_sprite.png') no-repeat 3px -232px;    
+}
+.catnav li li{
+    padding: 5px 0;
+    border:none;
+}
+.catnav li li a,
+.catnav li li span{
+    margin:0 0 0 10px;
+}
+.catnav ul ul{
+/*     margin-bottom:20px; */
+}
+.catnav li.active > a{
+    color:#8a0;
+}
+/*-------------------------------------------*/
+.pagination{
+    padding:20px 0 0 0;
+    font-size: 14px;
+}
+.pagination p{
+    width:120px;
+    float:left;
+    margin:0;
+    padding:2px 10px;
+}
+.pagination ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+.pagination li{
+    /*display:inline;*/
+    float:left;
+    margin:0;
+    padding:0;
+}
+.pagination a,
+.pagination span{
+    padding:2px 10px;
+    display:block;
+}
+.pagination .current{
+    background-color: #8a0;
+    color:#fff;
+}
+.pagination a.previous{
+    background:url('../images/navi_icon_sprite.png') no-repeat 0 -33px #fff;
+    padding-left:15px;
+}
+.pagination a.next{
+    background:url('../images/navi_icon_sprite.png') no-repeat right 7px #fff;
+    padding-right:32px;
+}
+/*-------------------------------------------*/
+.footernav{
+  text-align:center;
+  margin:10px 0;
+}
+.footernav ul{
+   font-size: 11px;
+   margin:0;
+   padding:0;
+   list-style:none; 
+}
+.footernav li{
+    display:inline;
+    padding:0 10px;
+    border-left:1px solid #999;
+}
+.footernav li.first{
+    border:none;
+}

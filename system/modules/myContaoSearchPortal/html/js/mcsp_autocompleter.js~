@@ -1,0 +1,1 @@
+window.addEvent('domready', function() { new Autocompleter.Request.JSON('plz_autocompl', '/ajax.php?action=ffl&id=".$this->id."', {'postVar': 'search'});});

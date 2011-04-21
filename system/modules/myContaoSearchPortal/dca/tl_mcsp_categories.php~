@@ -1,0 +1,306 @@
+<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+
+/**
+ * TYPOlight webCMS
+ * Copyright (C) 2005-2009 Leo Feyer
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, please visit the Free
+ * Software Foundation website at http://www.gnu.org/licenses/.
+ *
+ * PHP version 5
+ * @author    Sven Rhinow <sven@sr-tag.de>
+ * @package    myContaoSearchPortal
+ * @license    LGPL
+ * @filesource
+ */
+
+
+/**
+ * Table tl_mcsp_categories
+ */
+$GLOBALS['TL_DCA']['tl_mcsp_categories'] = array
+(
+    // Config
+    'config' => array
+    (
+		'dataContainer'         => 'Table',
+		'enableVersioning'      => true,
+		'label'                 => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['title'],
+		'onload_callback'	=> array
+		(
+		#    array('tl_mcsp_categories', 'getRoot')
+		)
+	),
+
+	// List
+	'list' => array
+	(
+		'sorting' => array
+		(
+			'mode'                    => 5,
+			'fields'                  => array('name', 'alias'),
+			'flag'                    => 1,
+			'panelLayout'             => 'search,sort,filter,limit ',
+			'icon'                    => 'system/modules/taxonomy/html/icon.gif',
+		),
+		'label' => array
+		(
+			'fields'                  => array('name', 'alias'),
+			'format'                  => '%s (%s)'
+		),
+		'global_operations' => array
+		(
+			'all' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
+				'href'                => 'act=select',
+				'class'               => 'header_edit_all',
+				'attributes'          => 'onclick="Backend.getScrollOffset();"'
+			)
+		),
+		'operations' => array
+		(
+			'edit' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['edit'],
+				'href'                => 'act=edit',
+				'icon'                => 'edit.gif',
+			),
+			'copy' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['copy'],
+				'href'                => 'act=copy',
+				'icon'                => 'copy.gif',
+			),
+			'copyChildren' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['copyChildren'],
+				'href'                => 'act=paste&amp;mode=copy&amp;childs=1',
+				'icon'                => 'copychilds.gif',
+				'attributes'          => 'onclick="Backend.getScrollOffset();"',
+			), 
+			'delete' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['delete'],
+				'href'                => 'act=delete',
+				'icon'                => 'delete.gif',
+				'attributes'          => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"',
+			),
+			'cut' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['cut'],
+				'href'                => 'act=paste&amp;mode=cut',
+				'icon'                => 'cut.gif',
+				'attributes'          => 'onclick="Backend.getScrollOffset();"',
+			), 
+			'show' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['show'],
+				'href'                => 'act=show',
+				'icon'                => 'show.gif'
+			),
+		)
+	),
+
+	// Palettes                                                         
+	'palettes' => array
+	(
+		'default'                     => '{title_legend},name,alias;tags,active;{meta_legend:hide},metatitle,metakeywords,metadescription;'
+	),
+
+	// Fields
+	'fields' => array
+	(
+		'name' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['name'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50','unique'=>true)
+		),
+		'alias' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_article']['alias'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'alnum', 'doNotCopy'=>true, 'spaceToUnderscore'=>true, 'maxlength'=>128),
+			'save_callback' => array
+			(
+				array('tl_mcsp_categories', 'generateAlias')
+			)
+
+		),		
+		'headline' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['headline'],
+
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50')
+		),
+		'catpic' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['catpic'],
+			'exclude'                 => true,
+			'inputType'               => 'fileTree',
+			'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'clr','extensions'=>'jpg,jpeg,png,gif','files'=>true, 'filesOnly'=>true, 'mandatory'=>false)
+		),
+		'tags' => array(
+			'label'     		  => &$GLOBALS['TL_LANG']['MSC']['tags'],
+			'inputType' 		  => 'tag',
+			'eval'                    => array('tl_class'=>'long')			
+		),
+		'textlong' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['textlong'],
+			'exclude'                 => true,
+			'filter'                  => false,
+			'inputType'               => 'textarea',
+			'eval'                    => array('mandatory'=>true, 'cols'=>'10','rows'=>'30','rte'=>'tinyMCE')
+			
+		),
+		'notice' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_categories']['notice'],
+			'exclude'                 => true,
+			'search'		  => true,			
+			'filter'                  => false,
+			'inputType'               => 'textarea',
+			'eval'                    => array('mandatory'=>false, 'cols'=>'10','rows'=>'30','rte'=>false)
+			
+		),
+		'metatitle' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_gk_companies']['metatitle'],
+			'exclude'                 => true,
+			'search'		  => true,			
+			'filter'                  => false,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>false, 'tl_class'=>'long')
+			
+		),		
+		'metakeywords' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_gk_companies']['metakeywords'],
+			'exclude'                 => true,
+			'search'		  => true,			
+			'filter'                  => false,
+			'inputType'               => 'textarea',
+			'eval'                    => array('mandatory'=>false, 'style'=>'height:60px;')
+			
+		),
+		'metadescription' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_gk_companies']['metadescription'],
+			'exclude'                 => true,
+			'search'		  => true,			
+			'filter'                  => false,
+			'inputType'               => 'textarea',
+			'eval'                    => array('mandatory'=>false, 'style'=>'height:60px;')
+			
+		),										
+		'active' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_gk']['active'],
+			'exclude'                 => true,
+			'filter'                  => true,			
+			'flag'                    => 2,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('doNotCopy'=>true)
+		)
+	)
+);
+/**
+ * Class tl_mcsp_categories
+ *
+ * Provide miscellaneous methods that are used by the data configuration array.
+ * @copyright  Leo Feyer 2008-2009
+ * @author     Leo Feyer <leo@typolight.org>
+ * @package    Controller
+ */
+class tl_mcsp_categories extends Backend
+{
+	/**
+	 * Retrieve the root point for taxonomy per user
+	 * @param mixed
+	 * @param object
+	 * @return string
+	 */
+    public function getRoot()
+    {
+	$this->import('BackendUser', 'User');
+    
+	if($this->User->isAdmin || !count($this->User->groups)) return NULL;
+    
+	switch($this->User->inherit)
+	{
+	    case 'custom' : $pagemounts = (array)$this->User->taxonomymounts;
+			    return $pagemounts;
+			    break;
+	    
+	    case 'group'  : $pagemounts = array();
+			    break;
+			    
+	    case 'extend' : $pagemounts = (array)$this->User->taxonomymounts;
+			    break;
+	}
+    
+	$objField = $this->Database->execute("SELECT taxonomymounts FROM tl_user_group WHERE id IN(".join(",",$this->User->groups).")");
+
+	while ($objField->next())
+	  if($objField->taxonomymounts)
+  		  $pagemounts = array_merge($pagemounts, deserialize($objField->taxonomymounts));
+
+ 		$GLOBALS['TL_DCA']['tl_mcsp_categories']['list']['sorting']['root'] = array_unique($pagemounts);
+		return  array_unique($pagemounts);
+    }
+	
+	/**
+	 * Autogenerate an article alias if it has not been set yet
+	 * @param mixed
+	 * @param object
+	 * @return string
+	 */
+	public function generateAlias($varValue, DataContainer $dc)
+	{
+		$autoAlias = false;
+
+		// Generate alias if there is none
+		if (!strlen($varValue))
+		{
+			$autoAlias = true;
+			$varValue = standardize($dc->activeRecord->name);
+		}
+
+		$objAlias = $this->Database->prepare("SELECT id FROM `tl_mcsp_categories` WHERE id=? OR alias=?")
+								   ->execute($dc->id, $varValue);
+
+		// Check whether the page alias exists
+		if ($objAlias->numRows > 1)
+		{
+			if (!$autoAlias)
+			{
+				throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+			}
+
+			$varValue .= '-' . $dc->id;
+		}
+
+		return $varValue;
+	}	
+}	
+
+?>

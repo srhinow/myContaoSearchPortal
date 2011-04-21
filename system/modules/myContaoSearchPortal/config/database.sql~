@@ -1,0 +1,186 @@
+-- **********************************************************
+-- *                                                        *
+-- * IMPORTANT NOTE                                         *
+-- *                                                        *
+-- * Do not import this file manually but use the TYPOlight *
+-- * install tool to create and maintain database tables!   *
+-- *                                                        *
+-- **********************************************************
+--
+-- Table `tl_module`
+--
+--   `ourimages_categories` blob NULL
+CREATE TABLE `tl_module` (
+     `mcsp_template` varchar(255) NOT NULL default '',
+     `mcsp_categories_jumpTo` smallint(5) unsigned NOT NULL default '0',
+     `mcsp_detail_jumpTo` smallint(5) unsigned NOT NULL default '0',
+     `mcsp_email` varchar(155) NOT NULL default '',
+     `mcsp_count` int(10) NOT NULL default '0',
+     `mcsp_type` int(10) NOT NULL default '0',
+     `mcsp_title_maxlength` int(10) NOT NULL default '0',     
+     `mcsp_text_maxlength` int(10) NOT NULL default '0',
+     `mcsp_video_width` int(10) NOT NULL default '0',
+     `mcsp_video_height` int(10) NOT NULL default '0',
+     `mcsp_sb_min_characters` int(10) NOT NULL default '0',
+     `mcsp_sb_max_characters` int(10) NOT NULL default '0',
+     `mcsp_breadcrumb_start` varchar(155) NOT NULL default '',
+     `mcsp_only_with_img` char(1) NOT NULL default '',
+     `mcsp_img_size` varchar(255) NOT NULL default '',
+     `mcsp_thumb_size` varchar(255) NOT NULL default '',
+     `mcsp_more_str` varchar(25) NOT NULL default '',
+     `mcsp_ignore_filter` char(1) NOT NULL default '',
+     `mcsp_css_file` varchar(255) NOT NULL default '',
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+-- 
+-- Table `tl_mcsp_category`
+-- 
+
+CREATE TABLE `tl_mcsp_categories` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `pid` int(10) unsigned NOT NULL default '0',
+  `tstamp` int(10) unsigned NOT NULL default '0',
+  `sorting` int(10) unsigned NOT NULL default '0', 
+  `type` varchar(255) NOT NULL default '',   
+  `name` varchar(255) NOT NULL default '',
+  `alias` varchar(64) NOT NULL default '',  
+  `catpic` varchar(255) NOT NULL default '',     
+  `textlong` blob NULL, 
+  `jumpTo` int(10) unsigned NOT NULL default '0',
+  `active` char(1) NOT NULL default '',
+  `notice` text NULL,
+  `metatitle` text NULL,
+  `metakeywords` text NULL,
+  `metadescription` text NULL,  
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Table `tl_mcsp_types`
+-- 
+
+CREATE TABLE `tl_mcsp_types` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `pid` int(10) unsigned NOT NULL default '0',
+  `tstamp` int(10) unsigned NOT NULL default '0',
+  `sorting` int(10) unsigned NOT NULL default '0', 
+  `name` varchar(255) NOT NULL default '',
+  `alias` varchar(64) NOT NULL default '', 
+  `active` char(1) NOT NULL default '', 
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Table `tl_mcsp_types`
+-- 
+
+CREATE TABLE `tl_mcsp_states` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `pid` int(10) unsigned NOT NULL default '0',
+  `tstamp` int(10) unsigned NOT NULL default '0',
+  `sorting` int(10) unsigned NOT NULL default '0', 
+  `name` varchar(255) NOT NULL default '',
+  `value` varchar(255) NOT NULL default '',
+  `alias` varchar(64) NOT NULL default '', 
+  `active` char(1) NOT NULL default '', 
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Table `tl_mcsp_counts`
+-- 
+
+CREATE TABLE `tl_mcsp_counts` (
+  `datum` date NOT NULL default '0000-00-00',
+  `from_id` int(10) unsigned NOT NULL default '0',
+  `from_table` varchar(100) NOT NULL default '',
+  `counter` int(10) NOT NULL default '0',  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Table `tl_mcsp_smallads` (Kleinanzeigen)
+-- 
+
+CREATE TABLE `tl_mcsp_smallads` (
+  `id` int(10) unsigned NOT NULL auto_increment,  
+  `pid` int(10) unsigned NOT NULL default '0',
+  `userid` int(10) unsigned NOT NULL default '0',
+  `invoiceid` int(10) unsigned NOT NULL default '0',
+  `adid` int(10) unsigned NOT NULL default '0',
+  `categoryid` int(10) unsigned NOT NULL default '0',
+  `typeid` int(10) unsigned NOT NULL default '0',
+  `stateid` int(10) unsigned NOT NULL default '0',
+  `zc_id` int(10) unsigned NOT NULL default '0',
+  `address` varchar(255) NOT NULL default '',
+  `tstamp` int(10) unsigned NOT NULL default '0',
+  `createdate` int(10) unsigned NOT NULL default '0', 
+  `change` int(10) unsigned NOT NULL default '0', 
+  `sorting` int(10) unsigned NOT NULL default '0', 
+  `title` varchar(255) NOT NULL default '',
+  `alias` varchar(64) NOT NULL default '',
+  `description` text NULL,
+  `pictures` blob NULL,
+  `basic_agreement` char(1) NOT NULL default '',
+  `price` varchar(25) NOT NULL default '',
+  `is_picture` char(1) NOT NULL default '',
+  `is_video` char(1) NOT NULL default '',
+  `video_title` varchar(255) NOT NULL default '',
+  `int_videopath` varchar(255) NOT NULL default '',
+  `ext_videopath` varchar(255) NOT NULL default '',
+  `ext_videoportal` varchar(255) NOT NULL default '',
+  `is_link` char(1) NOT NULL default '', 
+  `link_text` varchar(55) NOT NULL default '',
+  `link_url` varchar(255) NOT NULL default '',
+  `is_title_hightlight` char(1) NOT NULL default '',
+  `is_bg_hightlight` char(1) NOT NULL default '',
+  `view_type` varchar(25) NOT NULL default '',    
+   `active` char(1) NOT NULL default '',
+   PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Table `tl_mcsp_smallads` (Kleinanzeigen)
+-- 
+
+CREATE TABLE `tl_mcsp_settings` (
+  `id` int(10) unsigned NOT NULL auto_increment,  
+  `pid` int(10) unsigned NOT NULL default '0',
+  `tstamp` int(10) unsigned NOT NULL default '0',
+  `name` varchar(255) NOT NULL default '',
+  `costumer_group` varchar(255) NOT NULL default '',
+  `email_invoice` varchar(255) NOT NULL default '',
+  `email_info` varchar(255) NOT NULL default '',
+  `mail_customer_from` varchar(255) NOT NULL default '',  
+  `mail_customer_subject` varchar(255) NOT NULL default '',
+  `mail_customer_attach` varchar(255) NOT NULL default '',  
+  `days_active` int(10) unsigned NOT NULL default '0', 
+  `days_reminder_1` int(10) unsigned NOT NULL default '0', 
+  `days_reminder_2` int(10) unsigned NOT NULL default '0', 
+  `days_memory_extend` int(10) unsigned NOT NULL default '0',
+  `currency` varchar(25) NOT NULL default '',
+  `currency_symbol` varchar(25) NOT NULL default '',
+  `tax` varchar(25) NOT NULL default '',
+  `duration` varchar(25) NOT NULL default '',
+  `startadnumber` varchar(25) NOT NULL default '',
+  `sslorder` varchar(25) NOT NULL default '',
+    PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Table `tl_mcsp_invoices`
+-- 
+
+CREATE TABLE `tl_mcsp_invoices` (
+  `id` int(10) unsigned NOT NULL auto_increment,  
+  `pid` int(10) unsigned NOT NULL default '0',
+  `tstamp` int(10) unsigned NOT NULL default '0',
+  `name` varchar(255) NOT NULL default '',
+    PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+
+

@@ -1,0 +1,51 @@
+.boxlist ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    font-size:11px;
+}
+.boxlist li.item{
+    border:1px solid #a0a0a0;
+    width:173px;
+    height:250px;
+    overflow:hidden;
+    -moz-border-radius: 9px;
+    -khtml-border-radius:9px;
+    -webkit-border-radius:9px;
+    -o-border-radius:9px;
+    border-radius: 9px;
+    padding:8px;
+    margin:0 0 10px 5px;
+    float:left; 
+    position:relative;   
+}
+.boxlist h3{
+    font-size:11px;
+    font-weight:normal;
+    margin:0;
+    padding:3px 0;
+}
+.boxlist .imgbox{
+    border:1px solid #D8D8D8;
+    height:160px;
+    background:url('../images/imgbox_bg.gif') no-repeat 20px 30px;
+}
+.boxlist .imgbox:hover,
+.boxlist .imgbox:focus{
+    border:1px solid #8a0;
+}
+.boxlist .imgbox a{
+    display:block;
+    height:160px;
+}
+.boxlist .date,
+.boxlist .where,
+.boxlist .categories{
+    padding:3px 0;
+    color:#808080;
+}
+.boxlist .price{
+    position:absolute;
+    right:10px;
+    top:195px;
+}

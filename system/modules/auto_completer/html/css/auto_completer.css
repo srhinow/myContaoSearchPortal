@@ -1,0 +1,4 @@
+/** @see: http://www.cleancss.com **/
+ul.autocompleter-choices{position:absolute;list-style:none;text-align:left;z-index:50;margin:0;padding:0;}
+ul.autocompleter-choices li{position:relative;display:block;float:none !important;cursor:pointer;font-weight:400;white-space:nowrap;font-size:1em;line-height:1.5em;margin:-2px 0 0;padding:0.2em 1.5em 0.2em 1em;}
+ul.autocompleter-choices span.autocompleter-queried{display:inline;float:none;font-weight:700;margin:0;padding:0;}

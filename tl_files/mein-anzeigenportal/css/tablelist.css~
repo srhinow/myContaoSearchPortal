@@ -1,0 +1,84 @@
+.tablelist table{
+    margin:0;
+    padding:0;
+    border-width:0;
+    border-top:1px solid #a0a0a0;
+    border-collapse: collapse;
+    border-spacing: 0;    
+    width:100%;
+}
+.tablelist table tr{
+    margin:0;
+    padding:0;
+    border-width:0;
+    font-size:11px;
+    vertical-align:top;
+}
+.tablelist a:visited{
+    color:#909;
+    text-decoration:none;
+}
+.tablelist a:hover{
+    text-decoration:underline;
+}
+.tablelist table tr:hover,
+.tablelist table tr:focus{
+    background-color:#F6F5F5;    
+}
+.tablelist table td{
+    padding:5px;
+    border-width:0;
+    margin:0;
+    border-bottom:1px solid #a0a0a0;
+}
+.tablelist table h3{
+    margin:0;
+    padding:0;
+}
+.tablelist table td.imgbox{
+    width:136px;
+}
+.tablelist table td.imgbox a{
+    width:90px;
+    height:72px;
+    padding:5px;
+    display:block;
+    border:1px solid #D8D8D8;
+    -moz-border-radius: 9px;
+    -khtml-border-radius:9px;
+    -webkit-border-radius:9px;
+    -o-border-radius:9px;
+    border-radius: 9px;    
+    background:url('../images/imglist_bg.gif') no-repeat center 15px #fff;
+}
+.tablelist table td.imgbox a:hover,
+.tablelist table td.imgbox a:focus{
+    border:1px solid #8a0;
+}
+.tablelist table td.text{
+    width:393px;
+}
+.tablelist table td.text p a,
+.tablelist table td.text .date a{
+    color:#000;
+    display:block;
+}
+.tablelist table td.address{
+    width:126px;
+    line-height:1.5em;
+}
+.tablelist table td.address a{
+    color:#000;
+    display:block;
+}
+.tablelist table td.price{
+    width:90px;
+    text-align:right;
+    font-size:14px;
+    font-weight:bold;
+    color:#8a0;
+}
+.tablelist table td.price a{
+    color:#8a0;
+    display:block;
+}

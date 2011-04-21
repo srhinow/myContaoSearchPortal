@@ -1,0 +1,26 @@
+<?php if ($item['isActive']): ?>
+<span class="active"><?php echo $item['title']; ?></span>
+<?php else: ?>
+<a href="<?php echo $item['href']; ?>" title="<?php echo $item['title']; ?>"><?php echo $item['link']; ?></a> &#62; 
+<?php endif; ?>
+   
+<!-- indexer::stop -->
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<?php if ($this->headline): ?><?php echo $this->headline.' '; ?><?php endif; ?>
+
+<?php foreach ($this->items as $item): ?>
+   
+   <li class="item">
+	<div class="imgbox"><a href="" title="zu den Details dieser Anzeige"></a></div>
+	<h3><a href="">kleine Schmusekatze wartet auf ...</a></h3>
+	<div class="date">heute um 12:34</div>
+	<div class="where">Putlitz (Prignitz)</div>
+	<div class="price">VB</div>
+	<div class="categories">Kategorien: <a href="">Tiere abzugeben</a></div>
+   </li>
+
+<?php endforeach; ?>
+
+</div>
+<!-- indexer::continue -->
+		       

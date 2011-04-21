@@ -1,0 +1,279 @@
+/**
+ * Style sheet tags
+ */
+ul.cloud
+{
+	margin:0px;
+	padding:0.5em 0em;
+	text-align:justify;
+	line-height:1.3em;
+	clear:both!important;
+}
+
+ul.cloud li
+{
+	width:auto;
+	position:static;
+	float:none;
+	display:inline;
+	margin:0;
+	padding:0;
+}
+
+ul.cloud li a
+{
+	height:auto;
+	position:static;
+	float:none;
+	display:inline;
+	margin:0;
+	padding:0px 4px;
+	text-decoration:none;
+	color:#0053b7;
+	cursor:pointer;
+}
+
+ul.cloud li a span
+{
+	height:auto;
+	position:static;
+	float:none;
+	display:inline;
+	margin:0;
+	padding:0;
+	background:transparent;
+	border:none!important;
+}
+
+ul.cloud li a em
+{
+	display:none;
+}
+
+ul.cloud li.size1 a
+{
+	font-size:100%;
+	line-height:1.3em;
+}
+
+ul.cloud li.size2 a
+{
+	font-size:100%;
+	line-height:1.3em;
+}
+
+ul.cloud li.size3 a
+{
+	font-size:120%;
+	line-height:1.1em;
+}
+
+ul.cloud li.size4 a
+{
+	font-weight:bold;
+	font-size:120%;
+	line-height:1.1em;
+}
+
+ul.cloud li.size1 a
+{
+	color:#005fd3;
+}
+
+ul.cloud li.size2 a
+{
+	color:#0053b7;
+}
+
+ul.cloud li.size3 a
+{
+	color:#00459b;
+}
+
+ul.cloud li.size4 a
+{
+	color:#003679;
+}
+
+ul.cloud li.isCurrentTag a span, ul.cloud li a:hover
+{
+	background-color:#005fd3;
+	color:#fff!important;
+}
+
+ul.cloud li a:hover span
+{
+	color:#fff!important;
+}
+
+.mod_tagcloud .toggle-button
+{
+	padding-left:20px;
+	background-image:url("tl_files/tags/del_sprite_arrows.gif");
+	background-repeat:no-repeat;
+	background-position:3px -318px;
+	background-color: transparent;
+	cursor:pointer;
+}
+
+.mod_tagcloud .yes
+{
+	padding-left:20px;
+	background-image:url("tl_files/tags/del_sprite_arrows.gif");
+	background-repeat:no-repeat;
+	background-position:3px -359px;
+	background-color: transparent;
+	cursor:pointer;
+}
+
+.mod_tagcloud .off
+{
+	padding-left:20px;
+	background:none;
+	cursor:default;
+}
+
+.mod_tagcloud h3
+{
+	background-color:#e9e9e9;
+	font-weight:bold;
+	font-size:90%;
+	color:#666666;
+}
+
+ul.related
+{
+	width:100%;
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+
+ul.related li
+{
+	width:100%;
+	margin:0px;
+	padding:0pt;
+}
+
+ul.related li span.reltext
+{
+	width:48%;
+	float:left;
+	margin:0px;
+	padding:0% 0.5%;
+	text-align:left;
+}
+
+ul.related li span.relcount
+{
+	width:49%;
+	float:left;
+	margin:0px;
+	padding:0% 0.5%;
+	text-align:right;
+}
+
+ul.related li a
+{
+	height:auto;
+	position:static;
+	float:none;
+	display:inline;
+	margin:0;
+	padding:0;
+	text-decoration:none;
+	color:#0053b7;
+	cursor:pointer;
+}
+
+ul.related li a:hover, ul.related li a:hover span
+{
+	color:#fff;
+	background-color: #0053b7;
+}
+
+ul.tag-chain
+{
+        text-align:right;
+}
+
+li.tag-chain-item
+{
+        display:inline;
+        margin:0px;
+        padding:0px;
+        list-style-type:none;
+}
+
+li.tag-chain-item a
+{
+        padding:0.25em;
+        background-color:#eee;
+        text-decoration:none;
+        color:#666;
+}
+
+li.tag-chain-item a:hover
+{
+        background-color:#666;
+        text-decoration:none;
+        color:#fff;
+}
+
+div#tagscope {
+	width: 100%;
+}
+
+#tagscope ul,#tagscope li {
+	float: left;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#tagscope li.tag {
+	height: 16px;
+	padding-left: 16px;
+}
+
+#tagscope .removetag span {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	background-image: url("tl_files/tags/tag_remove.png");
+	color: transparent!important;
+}
+
+#tagscope .removetag span:hover {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	background-image: url("tl_files/tags/tag_remove_hover.png");
+	color: transparent!important;
+}
+
+#tagscope li.tag a {
+	text-decoration: none;
+	color: #0053b7;
+}
+
+#tagscope li.tag a:hover {
+	text-decoration: underline;
+}
+
+#tagscope li.reset a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+}
+
+#tagscope li.reset a:hover {
+	text-decoration: underline;
+}
+
+div.reset {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}

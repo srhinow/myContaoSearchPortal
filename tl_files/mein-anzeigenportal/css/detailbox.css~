@@ -1,0 +1,143 @@
+.detailbox{
+    background-color:#f9f9f9;
+    border:1px solid #acacac;
+    padding:10px;
+    margin:0 0 0 5px;
+    
+}
+.detailbox h1{
+    font-size:18px;
+    margin:0;
+    padding:0;
+}
+.detailbox .left{
+    width:553px;
+    float:left;
+    position:relative;
+}
+
+.detailbox .left .inforow{
+    margin:15px 0;
+    position:relative;
+}
+.detailbox .left .price{
+    position: absolute;
+    right:0;
+    top:0;
+}
+.detailbox .left .price span{
+    color:#8a0:
+}
+.detailbox .imgbox{
+    border:1px solid #acacac;
+    background-color:#fff;
+    height:275px;
+    padding:8px;
+}
+.detailbox .imgbox img{
+    float:left;
+    padding:0;
+    margin:0;
+}
+.detailbox .imgbox a.small img{
+   margin: 0 0 7px 7px; 
+}
+.detailbox .imgbox a.normal{
+  text-align:left;
+  float:left;
+}
+.detailbox .description{
+    font-size:14px;
+    line-height:1.3em;
+}
+.detailbox .backlink{
+    margin-top:10px;
+    display:block;
+    padding:5px 0 5px 35px;
+    background:url('../images/navi_icon_sprite.png') no-repeat 0 -76px transparent;
+}
+
+.detailbox .right{
+    font-size:12px;
+    float:left;
+    margin-left:10px;
+    width:190px;
+}
+.detailbox .right h5{
+    font-size:15px;
+    margin: 10px 0 0 0;
+    padding:0;
+}
+.detailbox .right .phonenumber{
+    font-weight:bold;
+    font-size:14px;
+}
+
+.detailbox .right .questbutton{
+      font-size:14px;
+      font-weight:bold;
+      margin:10px 0;
+      display:block;
+      cursor:pointer;
+}
+.detailbox .contactform label{
+    display:block;
+    margin-top:5px;
+}
+.detailbox .contactform input.text{
+    width:180px;
+}
+.detailbox .contactform textarea{
+    width:180px;
+    height:100px;
+}
+.detailbox .contactform input.captcha{
+    width:60px;
+}
+.detailbox .contactform input.submit{
+    border:2px solid #fff;
+    text-align:center;
+    cursor:pointer;
+    background-color:#165016;
+    color:#fff;
+    padding:2px ;
+    font-size:16px;
+    margin:10px 0 20px 0;
+
+    -moz-border-radius: 9px;
+    -khtml-border-radius:9px;
+    -webkit-border-radius:9px;
+    -o-border-radius:9px;
+    border-radius: 9px;   
+}
+.detailbox .plusbox{
+    margin:10px 0;
+    font-size:14px;
+    border:1px solid #acacac;
+    background-color:#fff;
+}
+.detailbox .plusbox ul{
+    margin:0;
+    padding:10px;
+    list-style:none;
+}
+.detailbox .plusbox li{
+    margin:0;
+    padding:0;
+}
+.detailbox .plusbox li a{
+    display:block;
+    padding:15px 3px 15px 30px;
+}
+.detailbox .plusbox li.wishlist a{
+    background:url('../images/tool_icon_sprite.png') no-repeat 0 8px transparent;
+}
+.detailbox .plusbox li.print a{
+    background:url('../images/tool_icon_sprite.png') no-repeat 0 -57px transparent;
+}
+.detailbox .plusbox li.share a{
+    background:url('../images/tool_icon_sprite.png') no-repeat 0 -128px transparent;
+}
+.detailbox .plusbox li.reporting a{
+    background:url('../images/tool_icon_sprite.png') no-repeat 0 -202px transparent;
+}

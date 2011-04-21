@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/startseite.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/angebote.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/angebotdetails.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/angebot-anzeigen.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/gesuche.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/gesuchdetails.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/gesuch-anzeigen.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/top-navigation.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/login.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/registrierung.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/hilfe.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/footer-navigation.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/kontakt.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/impressum.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/agb.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/datenschutzbestimmungen.html</loc></url>
+</urlset>
