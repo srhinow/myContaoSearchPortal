@@ -51,8 +51,8 @@ $GLOBALS['TL_DCA']['tl_mcsp_smallads'] = array
 		),
 		'label' => array
 		(
-			'fields'                  => array('title'),
-			'format'                  => '%s'
+			'fields'                  => array('title','adid'),
+			'format'                  => '%s (%s)'
 		),
 		'global_operations' => array
 		(
@@ -134,13 +134,13 @@ $GLOBALS['TL_DCA']['tl_mcsp_smallads'] = array
 		),
 		'adid' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_article']['adid'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['adid'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'alnum', 'doNotCopy'=>true, 'spaceToUnderscore'=>true, 'maxlength'=>128),
+			'eval'                    => array('rgxp'=>'alnum', 'doNotCopy'=>true, 'spaceToUnderscore'=>true),
 			'save_callback' => array
 			(
-				array('tl_mcsp_smallads', 'generateAlias')
+				array('tl_mcsp_smallads', 'generateAdId')
 			)
 
 		),				
@@ -484,6 +484,45 @@ class tl_mcsp_smallads extends Backend
 
 		return $varValue;
 	}
+	/**
+	 * Autogenerate an public smallad-ID if it has not been set yet
+	 * @param mixed
+	 * @param object
+	 * @return string
+	 */
+	public function generateAdId($varValue, DataContainer $dc)
+	{
+		$autoAdId = false;
+
+
+		// Generate adid if there is none
+		if (!strlen($varValue) || $varValue==0)
+		{
+			$objLastId = $this->Database->prepare("SELECT `adid` FROM `tl_mcsp_smallads` ORDER BY `adid` DESC")
+						    ->limit(1)
+						   ->execute();
+
+                        if($objLastId->adid == 0)
+                        {
+			   $settingObj = $this->Database->prepare('SELECT `startadnumber` FROM `tl_mcsp_settings`')
+							->limit(1)
+							->execute();
+			   $varValue = $settingObj->startadnumber; 
+                        }
+                        else
+                        {
+			    $varValue = $objLastId->adid;
+                        }
+                        
+                        $autoAdId = true;
+                   
+		}
+		
+		//wenn Nummer neu gesetzt wird einen weiter zählen
+		if($autoAdId) $varValue++;
+		
+		return $varValue;
+	}	
 		
 	public function generateLocateOptions()
 	{

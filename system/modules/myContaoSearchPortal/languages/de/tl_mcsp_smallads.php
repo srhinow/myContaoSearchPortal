@@ -34,6 +34,8 @@ $GLOBALS['TL_LANG']['tl_mcsp_smallads']['ext_videopath'] = array('externer Video
 $GLOBALS['TL_LANG']['tl_mcsp_smallads']['ext_videoportal'] = array('Videoportal bei externer Videoquelle','');
 $GLOBALS['TL_LANG']['tl_mcsp_smallads']['basic_agreement'] = array('Vereinbarungsbasis (VB)','wenn eine Verhandlung möglich sein soll');
 $GLOBALS['TL_LANG']['tl_mcsp_smallads']['price'] = array('Preis','z.B. 20 oder 11,12 OHNE Währung');
+$GLOBALS['TL_LANG']['tl_mcsp_smallads']['adid'] = array('Anzeigen-Nr.:','');
+$GLOBALS['TL_LANG']['tl_mcsp_smallads']['zc_id'] = array('PLZ / Ort:','');
 
 $GLOBALS['TL_LANG']['tl_mcsp_smallads']['new']  = array('Neues Angebote','Neues Angebote erstellen.');
 $GLOBALS['TL_LANG']['tl_mcsp_smallads']['show'] = array('Einzelheiten der Bedingung','Einzelheiten der Bedingung ID %s anzeigen');
