@@ -141,8 +141,11 @@ class ModuleCategorieMenu extends Module
 		        'detailurl' => $this->urlEncode($myHelper->createURL('id',$this->mcsp_categories_jumpTo,'Kategorie='.$objCats->alias,'',true,false)),
 			'class'=> strcmp($subcat,$objCats->alias)==0?'active':'normal'
 		      );
-		      if($subdata['subactive']) $JSOptionShowActive = $indexer; 
-                      if(strcmp($objCats->id,$actCategory)==0) $JSOptionShowActive = $indexer; 
+		      if(!$this->mcsp_ignore_filter)
+		      {
+			  if($subdata['subactive']) $JSOptionShowActive = $indexer; 
+			  if(strcmp($objCats->id,$actCategory)==0) $JSOptionShowActive = $indexer; 
+                      }
 		}
 				
                 $this->Template->headline = $this->headline;

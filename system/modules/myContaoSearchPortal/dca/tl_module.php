@@ -20,7 +20,7 @@
  * @filesource
 
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_categoriesmenu']  = 'name,headline,type;mcsp_template,mcsp_categories_jumpTo;space,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_categoriesmenu']  = 'name,headline,type;mcsp_template,mcsp_categories_jumpTo,mcsp_ignore_filter;space,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_searchbar_categories']  = 'name,headline,type;mcsp_categories_template;space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_breadcrumb']  = 'name,headline,type;mcsp_breadcrumb_start;space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_searchbar']  = 'name,type;mcsp_template,mcsp_type,mcsp_sb_min_characters,mcsp_sb_max_characters,mcsp_detail_jumpTo';

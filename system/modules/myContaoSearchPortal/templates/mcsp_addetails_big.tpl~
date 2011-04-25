@@ -32,7 +32,7 @@
 			    <?php echo $this->text; ?>
 			</div><!--.description--> 
 			  
-			<a href="<?php echo $this->backlink; ?>" class="backlink">Zurück zur Liste</a>
+			<a href="" class="backlink">Zurück zur Liste</a>
 </div>
 <!-- indexer::continue -->
 

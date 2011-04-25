@@ -95,9 +95,9 @@ class ModuleAdDetailsBig extends Module
                 }
                 
                 //Daten holen
-		$resultObj = $this->Database->prepare("SELECT *  `tl_mcsp_smallads` WHERE `id`=? OR `alias`=?")
+		$resultObj = $this->Database->prepare("SELECT * FROM `tl_mcsp_smallads` WHERE `id`=? OR `alias`=?")
 					    ->limit(1)
-					    ->execute($this->Input->get('anzeige'));
+					    ->execute($this->Input->get('anzeige'),$this->Input->get('anzeige'));
 		if ($resultObj->numRows < 1)
 		{
 			$this->Template->items = array();
@@ -105,53 +105,41 @@ class ModuleAdDetailsBig extends Module
 			
 		}
                
-		//create empty item--Array
-		$itemArr = array();
+
 		
 		//get image-size from modul-options
 		$img_size = unserialize($this->mcsp_img_size);
 		$thumb_size = unserialize($this->mcsp_thumb_size);
 		
-		if($this->Input->cookie('plz_ort')) $cookie_zc_id = $myHelper->getZcId($this->Input->cookie('plz_ort'));
+		if($this->Input->cookie('plz_ort')) $cookie_zc_id = $myHelper->getZcId($this->Input->cookie('plz_ort'));		
 		
-		while ($resultObj->next())
-		{		
-		
-		      //get first picture
-		      $firstPic = '';		      
-		      if($resultObj->is_picture==1 && count($resultObj->pictures)>0)
-		      {
-			  $pics = unserialize($resultObj->pictures);
-			  $firstPic =  $pics[0];			
-		      }
-		      
-		      $distance = '';
-		      if($cookie_zc_id) $distance = $myHelper->getDistance($cookie_zc_id,$resultObj->zc_id);
-		      		      
-		      $itemArr[] = array(
-		        'id' =>  $resultObj->id,
-		        'title' => $resultObj->title,
-		        'text' => $resultObj->description,
-		        'bicpic' => $this->getImage($this->urlEncode($firstPic), $img_size[0], $img_size[1],$img_size[2]),
-		        'thumbpic' => $this->getImage($this->urlEncode($firstPic), $img_size[0], $img_size[1],$img_size[2]),
-                        'category' => $resultObj->catname,
-                        'plz' => $resultObj->plz,
-                        'city' => $resultObj->city,
-                        'distance' => (!empty($distance) ? number_format($distance,2,',','.').'km':''),
-                        'price' => $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement),
-                        'humandate' => $myHelper->getHumandate($resultObj->createdate)
-                        
-		      );
+		//get first picture
+		$firstPic = '';		      
+		if($resultObj->is_picture==1 && count($resultObj->pictures)>0)
+		{
+		  $pics = unserialize($resultObj->pictures);
+		  $firstPic =  $pics[0];			
+		}		  	  
+
+		$this->Template->id = $resultObj->id;
+		$this->Template->title = $resultObj->title;
+		$this->Template->text = nl2br($resultObj->description);
+		$this->Template->adid = $resultObj->adid;
+		$this->Template->bicpic = $this->getImage($this->urlEncode($firstPic), $img_size[0], $img_size[1],$img_size[2]);
+		$this->Template->thumbpic = $this->getImage($this->urlEncode($firstPic), $thumb_size[0], $thumb_size[1],$thumb_size[2]);
+		$this->Template->category = $resultObj->catname;
+		$this->Template->price = $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement);
+		$this->Template->humandate = $myHelper->getHumandate($resultObj->createdate);
+		$this->Template->backlink = $this->getReferer();
 		    
-		}
+
                 if(strlen($this->mcsp_css_file)>0) 
                 {
 		    $cssfiles = unserialize($this->mcsp_css_file);		    
 		    foreach($cssfiles as $k => $v) $GLOBALS['TL_CSS'][] = $v; 
 		}
-		$this->Template->items = $itemArr;
 	}
-
+      }
 }
 
 ?>
