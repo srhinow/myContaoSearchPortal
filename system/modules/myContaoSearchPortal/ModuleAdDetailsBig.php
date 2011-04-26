@@ -127,6 +127,7 @@ class ModuleAdDetailsBig extends Module
 		      $thumbs[] = $this->getImage($this->urlEncode($pic), $thumb_size[0], $thumb_size[1],$thumb_size[2]);
 		      $layer_imgsrc[] = $this->getImage($this->urlEncode($pic), $layer_size[0], $layer_size[1],$layer_size[2]);			
 		  }
+		  $GLOBALS['TL_MOOTOOLS'][] = "<script type='text/javascript'>window.addEvent('domready', function() { $$('a.thumbs').addEvent('click', function(event){ event.stop();var defaultMargin = 0;var to = $(this).get('data-value');var imgheight = ".$img_size[1].";var topMargin = '-'+((imgheight * to)-imgheight)+'px;';$$('#bigpic ul').morph({'margin-top': topMargin });});});</script>";
 		}		  	                  
 		$this->Template->id = $resultObj->id;
 		$this->Template->moduleId = $this->id;
@@ -140,7 +141,11 @@ class ModuleAdDetailsBig extends Module
 		$this->Template->thumbpics = $thumbs;
 		$this->Template->layer_imgsrc =  $layer_imgsrc;
 		$this->Template->thumbpicsWidth = $thumb_size[0];
-		$this->Template->thumbpicsHeight = $thumb_size[1];		
+		$this->Template->thumbpicsHeight = $thumb_size[1];
+		$this->Template->isVideo = ($resultObj->is_video == 1)? true : false;
+		$this->Template->layerWidth = $layer_size[0];
+		$this->Template->layerHeight = $layer_size[1];
+		$this->Template->videopath = $resultObj->ext_videopath;		 				
 		$this->Template->category = $resultObj->catname;
 		$this->Template->price = $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement);
 		$this->Template->humandate = $myHelper->getHumandate($resultObj->createdate);

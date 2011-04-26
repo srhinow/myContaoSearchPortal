@@ -12,15 +12,30 @@
 	      <div id="bigpic" style="width:<?php echo $this->bicpicWidth; ?>px; height:<?php echo $this->bicpicHeight; ?>px;">
 	         <ul>
 	         <?php foreach($this->bicpics as $k => $bicpic): ?>
-	           <li><a href="<?php echo  $this->layer_imgsrc[$k]; ?>" class="img normal"><img src="<?php echo $bicpic; ?>" alt="" width="<?php echo $this->bicpicWidth; ?>" height="<?php echo $this->bicpicHeight; ?>" /></a></li>
+	           <li><div class="imgitem" style="width:">
+		       <a href="<?php echo  $this->layer_imgsrc[$k]; ?>" class="img normal" rel="lightbox[<?php echo $this->moduleId; ?>]"><img src="<?php echo $bicpic; ?>" alt="" width="<?php echo $this->bicpicWidth; ?>" height="<?php echo $this->bicpicHeight; ?>" /></a>
+		       <a href="<?php echo  $this->layer_imgsrc[$k]; ?>" class="detail_glas" rel="lightbox[<?php echo $this->moduleId; ?>]"><img src="tl_files/mein-anzeigenportal/images/plus_glas.png" alt=""/></a>
+		       </div>
+	           </li>
 	         <?php endforeach; ?>  
 	         </ul>
+	         
 	      </div>
 	      
-	      <?php foreach($this->thumbpics as $thumb): ?>
-		  <a href="" class="img small"><img src="<?php echo $thumb; ?>" alt="" width="<?php echo $this->thumbpicsWidth; ?>" height="<?php echo $this->thumbpicsHeight; ?>" /></a>		          
+	      <?php 
+	      $nr=0;
+	      foreach($this->thumbpics as $thumb): 
+	      $nr++;
+	      ?>
+		  <a href="" class="img thumbs" data-value="<?php echo $nr; ?>"><img src="<?php echo $thumb; ?>" alt="" width="<?php echo $this->thumbpicsWidth; ?>" height="<?php echo $this->thumbpicsHeight; ?>" /></a>		          
 	      <?php endforeach; ?>
 	   </div><!--.imgbox-->
+       <?php endif; ?>
+       
+       <?php if($this->isVideo):?>
+        <div class="videolayer_link">
+	   <a href='<?php echo $this->videopath; ?>' rel="lightbox[set <?php echo $this->layerWidth;?> <?php echo $this->layerHeight;?>]" title="" class="video_playlink">Video abspielen</a> 
+        </div><!--.videolayer_link-->
        <?php endif; ?>
        
        <div class="description">
