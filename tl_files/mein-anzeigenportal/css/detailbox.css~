@@ -26,7 +26,7 @@
     top:0;
 }
 .detailbox .left .price span{
-    color:#8a0:
+    color:#8a0;
 }
 .detailbox .imgbox{
     border:1px solid #acacac;
@@ -41,6 +41,16 @@
 }
 .detailbox .imgbox a.small img{
    margin: 0 0 7px 7px; 
+}
+#bigpic{
+  overflow:hidden;
+  float:left;
+}
+#bigpic ul{
+    margin:0;
+    padding:0;
+    border:0;
+    list-style:none;
 }
 .detailbox .imgbox a.normal{
   text-align:left;

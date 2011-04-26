@@ -110,23 +110,37 @@ class ModuleAdDetailsBig extends Module
 		//get image-size from modul-options
 		$img_size = unserialize($this->mcsp_img_size);
 		$thumb_size = unserialize($this->mcsp_thumb_size);
+		$layer_size = unserialize($this->mcsp_max_size);
 		
 		if($this->Input->cookie('plz_ort')) $cookie_zc_id = $myHelper->getZcId($this->Input->cookie('plz_ort'));		
 		
 		//get first picture
-		$firstPic = '';		      
+		$firstPic = '';	
+		$thumbs = array();	      
 		if($resultObj->is_picture==1 && count($resultObj->pictures)>0)
 		{
 		  $pics = unserialize($resultObj->pictures);
-		  $firstPic =  $pics[0];			
-		}		  	  
-
+		 # $firstPic =  $pics[0];
+		  foreach($pics as $k => $pic) 
+		  {
+		      $bigpics[] = $this->getImage($this->urlEncode($pic), $img_size[0], $img_size[1],$img_size[2]);
+		      $thumbs[] = $this->getImage($this->urlEncode($pic), $thumb_size[0], $thumb_size[1],$thumb_size[2]);
+		      $layer_imgsrc[] = $this->getImage($this->urlEncode($pic), $layer_size[0], $layer_size[1],$layer_size[2]);			
+		  }
+		}		  	                  
 		$this->Template->id = $resultObj->id;
+		$this->Template->moduleId = $this->id;
 		$this->Template->title = $resultObj->title;
 		$this->Template->text = nl2br($resultObj->description);
 		$this->Template->adid = $resultObj->adid;
-		$this->Template->bicpic = $this->getImage($this->urlEncode($firstPic), $img_size[0], $img_size[1],$img_size[2]);
-		$this->Template->thumbpic = $this->getImage($this->urlEncode($firstPic), $thumb_size[0], $thumb_size[1],$thumb_size[2]);
+		$this->Template->isPicture = ($resultObj->is_picture == 1)? true : false; 
+		$this->Template->bicpics = $bigpics;
+		$this->Template->bicpicWidth = $img_size[0];
+		$this->Template->bicpicHeight = $img_size[1];
+		$this->Template->thumbpics = $thumbs;
+		$this->Template->layer_imgsrc =  $layer_imgsrc;
+		$this->Template->thumbpicsWidth = $thumb_size[0];
+		$this->Template->thumbpicsHeight = $thumb_size[1];		
 		$this->Template->category = $resultObj->catname;
 		$this->Template->price = $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement);
 		$this->Template->humandate = $myHelper->getHumandate($resultObj->createdate);

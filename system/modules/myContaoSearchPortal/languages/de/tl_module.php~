@@ -34,7 +34,9 @@ $GLOBALS['TL_LANG']['tl_module']['mcsp_img_size']         = array('Bildbreite un
 $GLOBALS['TL_LANG']['tl_module']['mcsp_thumb_size']         = array('Thumbbreite und Thumbhöhe', '');
 $GLOBALS['TL_LANG']['tl_module']['mcsp_video_width']         = array('Videobreite', '');
 $GLOBALS['TL_LANG']['tl_module']['mcsp_video_height']         = array('Videohöhe', '');
-$GLOBALS['TL_LANG']['tl_module']['mcsp_css_file']         = array('Videohöhe', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_css_file']         = array('CSS-Datei', 'die nur für dieses Modul gebraucht wird');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_only_with_img']         = array('nur Anzeigen mit Bilder', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_more_str']         = array('nur Anzeigen mit Bilder', '');
 $GLOBALS['TL_LANG']['tl_module']['category_legend'] = 'Kategorie-Einstellung';
 $GLOBALS['TL_LANG']['tl_module']['countersite_legend'] = 'Zähler und Weiterleitungsseite';
 ?>

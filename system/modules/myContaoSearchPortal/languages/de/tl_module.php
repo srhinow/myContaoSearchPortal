@@ -21,20 +21,23 @@
  $GLOBALS['TL_LANG']['tl_module']['mcsp_categories_jumpTo']         = array('Seite der Kategorieansicht', 'Bitte wählen Sie die Seite aus, zu der Besucher beim Anklicken eines Links weitergeleitet werden sollen.'); 
  $GLOBALS['TL_LANG']['tl_module']['mcsp_detail_jumpTo']         = array('Seite der Anzeigen-Detailansicht', 'Bitte wählen Sie die Seite aus, zu der Besucher beim Anklicken eines Links weitergeleitet werden sollen.'); 
 
- $GLOBALS['TL_LANG']['tl_module']['mcsp_template']         = array('Template', 'Template das für die Darstellung von diesem Modul verwendet werden soll.');
+ $GLOBALS['TL_LANG']['tl_module']['mcsp_template']      = array('Template', 'Template das für die Darstellung von diesem Modul verwendet werden soll.');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_count']         = array('Anzahl', 'Anzahl der Elemente für dieses Modul. 0 = kein Limit');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_sb_min_characters']    = array('minimale Zeichenzahl', 'Anzahl der Zeichen ab wann die Ajax-Hilfe greifen soll bei PLZ /Ort');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_sb_max_characters']    = array('maximale Zeichenzahl', 'Anzahl der Zeichen bis wann die Ajax-Hilfe greifen soll bei PLZ /Ort');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_from_table']    = array('Name der Tabelle', 'die Tabelle die z.B. für die Contentbezogenen Filterung von Kategorien wichtig ist.');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_email']         = array('E-Mail', 'die E-Mail-Adresse die von dem aktuellen Modul verwendet werden soll.');
-$GLOBALS['TL_LANG']['tl_module']['mcsp_ignore_filter']         = array('Suche/ Filter ignorieren', 'wenn für die Anzeige die übergabeparameter z.B. der Suche ignoriert werden soll.');
-$GLOBALS['TL_LANG']['tl_module']['mcsp_title_maxlength']         = array('Darstellungslänge des Titels', '');
-$GLOBALS['TL_LANG']['tl_module']['mcsp_text_maxlength']         = array('Darstellungslänge des Textes', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_ignore_filter']    = array('Suche/ Filter ignorieren', 'wenn für die Anzeige die übergabeparameter z.B. der Suche ignoriert werden soll.');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_title_maxlength']  = array('Darstellungslänge des Titels', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_text_maxlength']   = array('Darstellungslänge des Textes', '');
 $GLOBALS['TL_LANG']['tl_module']['mcsp_img_size']         = array('Bildbreite und Bildhöhe', '');
-$GLOBALS['TL_LANG']['tl_module']['mcsp_thumb_size']         = array('Thumbbreite und Thumbhöhe', '');
-$GLOBALS['TL_LANG']['tl_module']['mcsp_video_width']         = array('Videobreite', '');
-$GLOBALS['TL_LANG']['tl_module']['mcsp_video_height']         = array('Videohöhe', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_thumb_size']       = array('Thumbbreite und Thumbhöhe', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_video_width']      = array('Videobreite', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_video_height']     = array('Videohöhe', '');
 $GLOBALS['TL_LANG']['tl_module']['mcsp_css_file']         = array('CSS-Datei', 'die nur für dieses Modul gebraucht wird');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_only_with_img']    = array('nur Anzeigen mit Bilder', '');
+$GLOBALS['TL_LANG']['tl_module']['mcsp_more_str']         = array('Verkürzungs-Zeichen', 'Zeichen die nach einer unvollständigen Anzeige angezeigt werden sollen (z.B. ...)');
+
 $GLOBALS['TL_LANG']['tl_module']['category_legend'] = 'Kategorie-Einstellung';
 $GLOBALS['TL_LANG']['tl_module']['countersite_legend'] = 'Zähler und Weiterleitungsseite';
 ?>

@@ -42,6 +42,16 @@
 .detailbox .imgbox a.small img{
    margin: 0 0 7px 7px; 
 }
+#bigpic{
+  overflow:hidden;
+  float:left;
+}
+#bigpic ul,#bigpic li{
+    margin:0;
+    padding:0;
+    border:0;
+    list-style:none;
+}
 .detailbox .imgbox a.normal{
   text-align:left;
   float:left;

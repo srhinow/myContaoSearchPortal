@@ -79,14 +79,14 @@ class ModuleAdList extends Module
 		$this->import('String');
 		
 		$myHelper = new myPortalHelper;
+		
+                $searchWhereArr = array();
                 $searchWhereStr  = '';
 
                 //Suchanfragen berücksichtigen
                 if(!$this->mcsp_ignore_filter)
                 {
-		    $searchWhereArr = array();
-		    
-		    
+		    		   		    
 		    //Unterkategorie per Get
 		    if($this->Input->get('Kategorie')) 
 		    {
@@ -112,9 +112,15 @@ class ModuleAdList extends Module
 			if(strlen($actCategory)) $searchWhereArr[] = "`tl_mcsp_categories`.`pid` = '".$actCategory."'";
 		    
 		    }
-		    if(count($searchWhereArr)>0) $searchWhereStr = " AND ".implode(' AND ',$searchWhereArr);
+		    
+
                 }
-                
+		
+		//ads only with image
+		if($this->mcsp_only_with_img == 1) $searchWhereArr[] = "`tl_mcsp_smallads`.`pictures` != '' AND `tl_mcsp_smallads`.`is_picture`=1";
+		#print_r($searchWhereArr); 
+		if(count($searchWhereArr)>0) $searchWhereStr = " AND ".implode(' AND ',$searchWhereArr);                
+		
                 //Daten holen
 		$resultObj = $this->Database->prepare("SELECT `tl_mcsp_smallads`.*,
 							`tl_mcsp_categories`.`name` AS `catname`,
@@ -129,7 +135,7 @@ class ModuleAdList extends Module
 							".$searchWhereStr."							
 							ORDER BY `createdate` DESC ")
 					    ->limit($this->mcsp_count)
-					    ->execute();
+					    ->execute();			    
 		if ($resultObj->numRows < 1)
 		{
 			$this->Template->items = array();
