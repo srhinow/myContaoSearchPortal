@@ -81,6 +81,15 @@ class ModuleSearchBar extends Module
 	{
 		$myHelper = new myPortalHelper;
                 $cookieLifeTime = time()+3600*24*7;
+		$cookieDelTime = time()-3600*24*7;
+		
+		//wenn gesetzt Categorie-Cookies löschen
+		if($this->mcsp_del_cookie)
+		{
+		    $this->setCookie('categories','',$cookieDelTime);
+		    $this->setCookie('subcategories','',$cookieDelTime);
+		}
+		
 		if($this->Input->post('FORM_SUBMIT')=='bigSearchForm')
 		{
 		   # $this->generateAjax();
@@ -116,6 +125,9 @@ class ModuleSearchBar extends Module
 			$categoriesValue = $this->Input->cookie('categories');				
 		    }
 		}
+		//wenn die Kategorie ignoriert werden soll (Modul-Einstellung)
+		if($this->mcsp_ignore_filter)  $categoriesValue ='';
+		
                 //create Formfields
                 $inputKeyword = new FormTextField();
 		$inputKeyword->id = 'searchkeyword';
@@ -175,8 +187,7 @@ class ModuleSearchBar extends Module
                 
                 $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/myContaoSearchPortal/html/autocompleter/js/ac_compress.js';
                 
-                $GLOBALS['TL_HEAD'][] = "
-               	<script type='text/javascript'>/* <![CDATA[ */ window.addEvent('domready', function() { new Autocompleter.Request.JSON('ctrl_searchwhere', 'ajax.php?action=fmd&id=".$this->id."', {'postVar': 'plz_ort',indicatorClass:'autocompleter-loading',zIndex:1000,minLength:".$this->mcsp_sb_min_characters."});}); /* ]]> */</script>";
+                $GLOBALS['TL_HEAD'][] = "<script type='text/javascript'>/* <![CDATA[ */ window.addEvent('domready', function() { new Autocompleter.Request.JSON('ctrl_searchwhere', 'ajax.php?action=fmd&id=".$this->id."', {'postVar': 'plz_ort',indicatorClass:'autocompleter-loading',zIndex:1000,minLength:".$this->mcsp_sb_min_characters."});}); /* ]]> */</script>";
                 
                 $GLOBALS['TL_CSS'][] = 'system/modules/myContaoSearchPortal/html/autocompleter/css/auto_completer.css';
                 #print $this->id;
