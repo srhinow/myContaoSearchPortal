@@ -84,6 +84,7 @@ $GLOBALS['FE_MOD']['mcsp'] = array
 		'mcsp_breadcrumb'=> 'ModuleBreadCrumb',
 		'mcsp_searchbar'=>'ModuleSearchBar',
 		'mcsp_adlist'=> 'ModuleAdList',
+		'mcsp_addetailsbig'=> 'ModuleAdDetailsBig',
 	);
 	
 

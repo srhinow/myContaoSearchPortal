@@ -30,6 +30,7 @@ CREATE TABLE `tl_module` (
      `mcsp_max_size` varchar(255) NOT NULL default '',
      `mcsp_more_str` varchar(25) NOT NULL default '',
      `mcsp_ignore_filter` char(1) NOT NULL default '',
+     `mcsp_del_cookie` char(1) NOT NULL default '',
      `mcsp_css_file` varchar(255) NOT NULL default '',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -134,6 +135,7 @@ CREATE TABLE `tl_mcsp_smallads` (
   `is_link` char(1) NOT NULL default '', 
   `link_text` varchar(55) NOT NULL default '',
   `link_url` varchar(255) NOT NULL default '',
+  `is_hightlight` char(1) NOT NULL default '',
   `is_title_hightlight` char(1) NOT NULL default '',
   `is_bg_hightlight` char(1) NOT NULL default '',
   `view_type` varchar(25) NOT NULL default '',    

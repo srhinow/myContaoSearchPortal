@@ -176,8 +176,8 @@ class ModuleAdList extends Module
                         'city' => $resultObj->city,
                         'distance' => (!empty($distance) ? number_format($distance,2,',','.').'km':''),
                         'price' => $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement),
-                        'humandate' => $myHelper->getHumandate($resultObj->createdate)
-                        
+                        'humandate' => $myHelper->getHumandate($resultObj->createdate),
+			'hightlightClass' => (($resultObj->is_hightlight == 1)? ' hightlight ' : '')
 		      );
 		    
 		}

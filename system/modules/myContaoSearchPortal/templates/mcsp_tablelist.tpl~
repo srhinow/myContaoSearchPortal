@@ -8,7 +8,7 @@
 		<td class="imgbox"><a href="<?php echo $item['detailurl']; ?>" title="zu den Details der Anzeige <?php echo $item['title']; ?>"><?php if($item['picture']):?><img src='<?php echo $item['picture'];?>' alt=''><?php endif; ?></a></td>
 		<td class="text">
 		    <h3><a href="<?php echo $item['detailurl']; ?>"><?php echo $item['title']; ?></a></h3>
-		    <p><a href="<?php echo $item['detailurl']; ?>"><?php echo nl2br($item['text']); ?></a></p>
+		    <p><a href="<?php echo $item['detailurl']; ?>"><?php echo $item['text']; ?></a></p>
 		    <div class="date"><a href="<?php echo $item['detailurl']; ?>"><?php echo $item['humandate']; ?></a></div>				
 		</td>
 		<td class="address">

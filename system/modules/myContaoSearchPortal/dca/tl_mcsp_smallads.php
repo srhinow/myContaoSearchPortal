@@ -98,7 +98,7 @@ $GLOBALS['TL_DCA']['tl_mcsp_smallads'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array('is_picture','is_video','is_link'),		
-		'default' => 'typeid,categoryid,title,alias,adid,description;basic_agreement,price;userid,zc_id,address,stateid;{options_legend:hide},is_picture,is_video,is_link,is_title_hightlight,is_bg_hightlight,view_type;createdate'
+		'default' => 'typeid,categoryid,title,alias,adid,description;basic_agreement,price;userid,zc_id,address,stateid;{options_legend:hide},is_picture,is_video,is_link,is_hightlight,view_type;createdate'
 	),
 	// Subpalettes
 	'subpalettes' => array
@@ -321,23 +321,35 @@ $GLOBALS['TL_DCA']['tl_mcsp_smallads'] = array
 			'search'                  => true,
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true,'rgxp'=>'url', 'maxlength'=>255,'tl_class'=>'long'),
-		),											
-		'is_title_hightlight' => array
+		),
+		'is_hightlight' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['is_title_hightlight'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['is_hightlight'],
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'checkbox',
+			'save_callback' => array
+			(
+				array('tl_mcsp_smallads', 'isPremium')
+			)
 			
-		),
-		'is_bg_hightlight' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['is_bg_hightlight'],
-			'exclude'                 => true,
-			'filter'                  => true,
-			'inputType'               => 'checkbox',
-			
-		),
+		),													
+// 		'is_title_hightlight' => array
+// 		(
+// 			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['is_title_hightlight'],
+// 			'exclude'                 => true,
+// 			'filter'                  => true,
+// 			'inputType'               => 'checkbox',
+// 			
+// 		),
+// 		'is_bg_hightlight' => array
+// 		(
+// 			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['is_bg_hightlight'],
+// 			'exclude'                 => true,
+// 			'filter'                  => true,
+// 			'inputType'               => 'checkbox',
+// 			
+// 		),
 		
 		'pictures' => array
 		(
@@ -450,6 +462,24 @@ class tl_mcsp_smallads extends Backend
                 if(empty($varValue)) return '';
                 
 		return myPortalHelper::cleanText($varValue);
+	}
+	
+	
+	/**
+	 * isPremium
+	 * @param mixed
+	 * @param object
+	 * @return string
+	 */
+	public function isPremium($varValue, DataContainer $dc)
+	{
+         
+                		
+                if(empty($varValue)) return '';
+
+		$newVal = (in_array($dc->activeRecord->view_type , array('premium')))? '' : 1; 
+
+                return $newVal;		
 	}
 	
 	/**

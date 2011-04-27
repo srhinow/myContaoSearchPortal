@@ -29,13 +29,13 @@
  * @author     Sven Rhinow <support@sr-tag.de>
  * @package    Controller
  */
-class ModuleAdDetailsBig extends Module
+class ModuleAdDetailsSidebar extends Module
 {
 	/**
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = 'mcsp_addetails';
+	protected $strTemplate = 'mcsp_adsidebar';
 
 
 	/**
@@ -55,7 +55,7 @@ class ModuleAdDetailsBig extends Module
 		{
 			$objTemplate = new BackendTemplate('be_wildcard');
 
-			$objTemplate->wildcard = '### ANZEIGEN-Detail-Hauptansicht ###';
+			$objTemplate->wildcard = '### ANZEIGEN-Detail-Sidebar ###';
 
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $this->id;
@@ -81,6 +81,38 @@ class ModuleAdDetailsBig extends Module
 		$myHelper = new myPortalHelper;
                 $searchWhereStr  = '';
 
+                //formular-fieds
+                $inputEmail = new FormTextField();
+		$inputEmail->id = 'your_email';
+		$inputEmail->name = 'your_email';
+		$inputEmail->label = 'Ihre E-Mail-Adresse';
+		$inputEmail->mandatory = true;		
+		$inputEmail->rgxp = 'email';
+		
+                $inputNotice = new FormTextArea();
+		$inputNotice->id = 'your_notice';
+		$inputNotice->name = 'your_notice';
+		$inputNotice->label = 'Ihre Nachricht';
+		$inputNotice->mandatory = true;		
+		$inputNotice->rgxp = 'extnd';	
+			
+                $inputCaptcha = new FormCaptcha();
+		$inputCaptcha->id = 'captcha';
+		$inputCaptcha->name = 'captcha';
+		$inputCaptcha->mandatory = true;		
+		
+		//wenn Formular abgesendet wurde		
+		if($this->Input->post('FORM_SUBMIT')=='ad_contact_form')
+		{
+		    $email = $this->Input->post('your_email');
+		    $notice = $this->Input->post('your_notice');
+		    $captcha = $this->Input->post('captcha');
+		    							
+		    $inputEmail->validate();
+		    $inputNotice->validate();
+		    $inputCaptcha->validate();							
+		}
+                
                 //Suchanfragen berücksichtigen
                 if(!$this->mcsp_ignore_filter)
                 {
@@ -95,67 +127,63 @@ class ModuleAdDetailsBig extends Module
                 }
                 
                 //Daten holen
-		$resultObj = $this->Database->prepare("SELECT * FROM `tl_mcsp_smallads` WHERE `id`=? OR `alias`=?")
+		$resultObj = $this->Database->prepare("SELECT 
+		`tl_mcsp_smallads`.* ,
+		`tl_member`.`groups`,
+		`tl_member`.`phone`,
+		`tl_member`.`mobile`,
+		`zip_coordinates`.`zc_zip` as `plz`,
+		`zip_coordinates`.`zc_location_name` as `ort`
+		FROM `tl_mcsp_smallads` 
+		LEFT JOIN `tl_member` ON `tl_mcsp_smallads`.`userid` = `tl_member`.`id`
+		LEFT JOIN `zip_coordinates` USING(`zc_id`)
+		WHERE `tl_mcsp_smallads`.`id`=? OR `tl_mcsp_smallads`.`alias`=?")
 					    ->limit(1)
 					    ->execute($this->Input->get('anzeige'),$this->Input->get('anzeige'));
 		if ($resultObj->numRows < 1)
 		{
-			$this->Template->items = array();
+			#$this->Template->items = array();
 			return;
 			
 		}
-               
-
-		
-		//get image-size from modul-options
-		$img_size = unserialize($this->mcsp_img_size);
-		$thumb_size = unserialize($this->mcsp_thumb_size);
-		$layer_size = unserialize($this->mcsp_max_size);
-		
-		if($this->Input->cookie('plz_ort')) $cookie_zc_id = $myHelper->getZcId($this->Input->cookie('plz_ort'));		
-		
-		//get first picture
-		$firstPic = '';	
-		$thumbs = array();	      
-		if($resultObj->is_picture==1 && count($resultObj->pictures)>0)
+                //get first group (privat/gewerblich)
+		$groups = unserialize($resultObj->groups);
+		if(count($groups)>0)
 		{
-		  $pics = unserialize($resultObj->pictures);
-		 # $firstPic =  $pics[0];
-		  foreach($pics as $k => $pic) 
-		  {
-		      $bigpics[] = $this->getImage($this->urlEncode($pic), $img_size[0], $img_size[1],$img_size[2]);
-		      $thumbs[] = $this->getImage($this->urlEncode($pic), $thumb_size[0], $thumb_size[1],$thumb_size[2]);
-		      $layer_imgsrc[] = $this->getImage($this->urlEncode($pic), $layer_size[0], $layer_size[1],$layer_size[2]);			
-		  }
-		  $GLOBALS['TL_MOOTOOLS'][] = "<script type='text/javascript'>window.addEvent('domready', function() { $$('a.thumbs').addEvent('click', function(event){ event.stop();var defaultMargin = 0;var to = $(this).get('data-value');var imgheight = ".$img_size[1].";var topMargin = '-'+((imgheight * to)-imgheight)+'px;';$$('#bigpic ul').morph({'margin-top': topMargin });});});</script>";
-		}		  	                  
+		    $groupObj = $this->Database->prepare('SELECT `name` FROM `tl_member_group` WHERE `id`=?')
+					      ->limit(1)
+					      ->execute($groups[0]);	  	                  
+		}	  	                  
+		
+		//get phoneNumber
+		$isPhone = false;
+		if(strlen($resultObj->phone) || strlen($resultObj->mobile))
+		{
+		    $isPhone = true;
+		    $number = strlen($resultObj->phone) ? $resultObj->phone : $resultObj->mobile;
+		}
+		
+		//set values for template
 		$this->Template->id = $resultObj->id;
 		$this->Template->moduleId = $this->id;
 		$this->Template->title = $resultObj->title;
-		$this->Template->text = nl2br($resultObj->description);
 		$this->Template->adid = $resultObj->adid;
-		$this->Template->isPicture = ($resultObj->is_picture == 1)? true : false; 
-		$this->Template->bicpics = $bigpics;
-		$this->Template->bicpicWidth = $img_size[0];
-		$this->Template->bicpicHeight = $img_size[1];
-		$this->Template->thumbpics = $thumbs;
-		$this->Template->layer_imgsrc =  $layer_imgsrc;
-		$this->Template->thumbpicsWidth = $thumb_size[0];
-		$this->Template->thumbpicsHeight = $thumb_size[1];
-		$this->Template->isVideo = ($resultObj->is_video == 1)? true : false;
-		$this->Template->layerWidth = $layer_size[0];
-		$this->Template->layerHeight = $layer_size[1];
-		$this->Template->videopath = $resultObj->ext_videopath;
-		$this->Template->isLink = ($resultObj->is_link == 1)? true : false;
-		$this->Template->linkText = strip_tags($resultObj->link_text);
-		$this->Template->linkUrl = $myHelper->checkLink($resultObj->link_url);
-		$this->Template->category = $resultObj->catname;
-		$this->Template->hightlightClass = ($resultObj->is_hightlight == 1)? ' hightlight ' : '';
+                $this->Template->plz = $resultObj->plz;
+                $this->Template->ort = $resultObj->ort;
+                $this->Template->group = $groupObj->name;
+                $this->Template->address = $resultObj->address;
+                $this->Template->isPhone = $isPhone;
+                $this->Template->number = $number;
+		$this->Template->category = $resultObj->catname;		
 		$this->Template->price = $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement);
 		$this->Template->humandate = $myHelper->getHumandate($resultObj->createdate);
 		$this->Template->backlink = $this->getReferer();
 		    
-
+		$this->Template->inputEmail = $inputEmail;
+		$this->Template->inputNotice = $inputNotice;
+		$this->Template->inputCaptcha = $inputCaptcha;   
+		    
+                //customer css-file forr this module 
                 if(strlen($this->mcsp_css_file)>0) 
                 {
 		    $cssfiles = unserialize($this->mcsp_css_file);		    

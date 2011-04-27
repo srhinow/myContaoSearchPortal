@@ -27,7 +27,7 @@
 }
 .detailbox .left .price span{
     color:#8a0;
-    text-shadow: 1px 1px 0 #333;
+    text-shadow: 1px 1px 0 #666;
 }
 .detailbox .imgbox{
     border:1px solid #acacac;
@@ -101,7 +101,7 @@
 }
 .detailbox .right h5{
     font-size:15px;
-    margin: 10px 0 0 0;
+    margin: 0;
     padding:0;
 }
 .detailbox .right .phonenumber{

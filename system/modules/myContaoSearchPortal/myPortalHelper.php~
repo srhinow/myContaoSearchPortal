@@ -294,7 +294,7 @@ class myPortalHelper extends Frontend
 	    $destinationID = (int) $destinationID;
 	    
 	    $pointObj = $this->Database->prepare('SELECT * FROM zip_coordinates WHERE `zc_id`= ?')->limit(1)->execute($actpointID);
-	   print_r($pointObj); 
+
 	    $distanceObj = $this->Database->prepare('SELECT 
 		ACOS(
 		     SIN(RADIANS(zc_lat)) * SIN(RADIANS('.$pointObj->zc_lat.')) 

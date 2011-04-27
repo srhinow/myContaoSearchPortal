@@ -4,7 +4,7 @@
     <?php if ($this->headline): ?><?php echo $this->headline.' '; ?><?php endif; ?>
        <table>
            <?php foreach ($this->items as $item):?>
-	    <tr class="item">
+	    <tr class="item<?php echo $item['hightlightClass'];?>">
 		<td class="imgbox"><a href="<?php echo $item['detailurl']; ?>" title="zu den Details der Anzeige <?php echo $item['title']; ?>"><?php if($item['picture']):?><img src='<?php echo $item['picture'];?>' alt=''><?php endif; ?></a></td>
 		<td class="text">
 		    <h3><a href="<?php echo $item['detailurl']; ?>"><?php echo $item['title']; ?></a></h3>

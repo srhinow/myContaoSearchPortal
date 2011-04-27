@@ -20,12 +20,13 @@
  * @filesource
 
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_categoriesmenu']  = 'name,headline,type;mcsp_template,mcsp_categories_jumpTo,mcsp_ignore_filter;space,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_categoriesmenu']  = 'name,headline,type;mcsp_template,mcsp_categories_jumpTo,mcsp_ignore_filter,mcsp_del_cookie;space,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_searchbar_categories']  = 'name,headline,type;mcsp_categories_template;space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_breadcrumb']  = 'name,headline,type;mcsp_breadcrumb_start;space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_searchbar']  = 'name,type;mcsp_template,mcsp_type,mcsp_sb_min_characters,mcsp_sb_max_characters,mcsp_detail_jumpTo';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adlist']  = 'name,type;mcsp_template,mcsp_type;mcsp_detail_jumpTo,mcsp_categories_jumpTo,mcsp_css_file;mcsp_count,mcsp_title_maxlength,mcsp_text_maxlength,mcsp_more_str,mcsp_img_size,mcsp_ignore_filter,mcsp_only_with_img';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailsbig']  = 'name,type;mcsp_template;mcsp_css_file;mcsp_img_size,mcsp_thumb_size;mcsp_video_width,mcsp_video_height';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailsbig']  = 'name,type;mcsp_template;mcsp_css_file;mcsp_img_size,mcsp_thumb_size,mcsp_max_size;mcsp_video_width,mcsp_video_height';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailssidebar']  = 'name,headline,type;mcsp_template;mcsp_css_file';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 (

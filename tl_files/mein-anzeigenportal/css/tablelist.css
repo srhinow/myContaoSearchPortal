@@ -14,17 +14,6 @@
     font-size:11px;
     vertical-align:top;
 }
-.tablelist a:visited{
-    color:#909;
-    text-decoration:none;
-}
-.tablelist a:hover{
-    text-decoration:underline;
-}
-.tablelist table tr:hover,
-.tablelist table tr:focus{
-    background-color:#F6F5F5;    
-}
 .tablelist table td{
     padding:5px;
     border-width:0;
@@ -51,10 +40,7 @@
     border-radius: 9px;    
     background:url('../images/imglist_bg.gif') no-repeat center 15px #fff;
 }
-.tablelist table td.imgbox a:hover,
-.tablelist table td.imgbox a:focus{
-    border:1px solid #8a0;
-}
+
 .tablelist table td.text{
     width:393px;
 }
@@ -81,4 +67,30 @@
 .tablelist table td.price a{
     color:#8a0;
     display:block;
+}
+.tablelist table tr.hightlight{
+    background-color: #EFFCBD;
+}
+.tablelist table tr.hightlight h3{
+    font-size: 14px;
+    color:#165016;
+}
+.tablelist table tr.hightlight td.price a{
+    color:#165016;
+}
+.tablelist a:visited{
+    color:#909;
+    text-decoration:none;
+}
+.tablelist a:hover{
+    text-decoration:underline;
+}
+.tablelist table tr:hover,
+.tablelist table tr:focus{
+    background-color:#F6F5F5;    
+}
+
+.tablelist table td.imgbox a:hover,
+.tablelist table td.imgbox a:focus{
+    border:1px solid #8a0;
 }

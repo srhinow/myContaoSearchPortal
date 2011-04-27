@@ -42,7 +42,9 @@
 	   <h3>Beschreibung</h3>
 	    <?php echo $this->text; ?>
 	</div><!--.description--> 
-	  
+	<?php if($this->isLink):?>
+	<p><strong>Website:</strong>&nbsp;<a href="<?php echo $this->linkUrl; ?>" target="_blank"><?php echo $this->linkText; ?></a></p>
+	<?php endif; ?>  
 	<a href="<?php echo $this->backlink; ?>" class="backlink">Zurück zur Liste</a>
 </div>
 <!-- indexer::continue -->

@@ -145,8 +145,11 @@ class ModuleAdDetailsBig extends Module
 		$this->Template->isVideo = ($resultObj->is_video == 1)? true : false;
 		$this->Template->layerWidth = $layer_size[0];
 		$this->Template->layerHeight = $layer_size[1];
-		$this->Template->videopath = $resultObj->ext_videopath;		 				
-		$this->Template->category = $resultObj->catname;
+		$this->Template->videopath = $resultObj->ext_videopath;
+		$this->Template->isLink = ($resultObj->is_link == 1)? true : false;
+		$this->Template->linkText = strip_tags($resultObj->link_text);
+		$this->Template->linkUrl = $myHelper->checkLink($resultObj->link_url);
+		$this->Template->category = $resultObj->catname;		
 		$this->Template->price = $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement);
 		$this->Template->humandate = $myHelper->getHumandate($resultObj->createdate);
 		$this->Template->backlink = $this->getReferer();

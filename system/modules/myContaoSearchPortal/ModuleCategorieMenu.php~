@@ -81,14 +81,27 @@ class ModuleCategorieMenu extends Module
 	{
 		$myHelper = new myPortalHelper;
 		$cookieLifeTime = time()+3600*24*7;
+		$cookieDelTime = time()-3600*24*7;
+		
+		//wenn gesetzt Categorie-Cookies löschen
+		if($this->mcsp_del_cookie)
+		{
+		    $this->setCookie('categories','',$cookieDelTime);
+		    $this->setCookie('subcategories','',$cookieDelTime);
+		}
 		
 		//Hauptkategorie
 		if($this->Input->post('categories'))
 		{
 		    $actCategory = $this->Input->post('categories');
 		}
-		else{
+		elseif($this->Input->cookie('categories'))
+		{
 		    $actCategory = $this->Input->cookie('categories');		
+		}
+		else
+		{
+		   $actCategory = '';
 		}		
 		
 		//Subkategorie
@@ -111,12 +124,31 @@ class ModuleCategorieMenu extends Module
 		$postSubCat = $this->Input->post('categories');
 		if(strcmp($postSubCat,$this->Input->cookie('categories')) && !empty($postSubCat)) 
 		{
-		    $this->setCookie('subcategories','',-$cookieLifeTime);
+		    $this->setCookie('subcategories','',$cookieDelTime);
 		    $subcat = '';		    		    
 		}
-		$objCats = $this->Database->prepare("SELECT * FROM `tl_mcsp_categories` 
-							WHERE `active`='1' AND `pid`=0 ORDER BY `sorting`")
-					    ->execute();
+				
+		//Detail-Aufruf auf aktuelle Category setzen
+		if($this->Input->get('anzeige'))
+		{
+		     $adObj = $this->Database->prepare("SELECT 
+					     `tl_mcsp_smallads`.`categoryid`,
+					     `tl_mcsp_categories`.`alias` as `catalias` 
+					     FROM `tl_mcsp_smallads` 
+		                             LEFT JOIN `tl_mcsp_categories` ON `tl_mcsp_smallads`.`categoryid` =  `tl_mcsp_categories`.`id`
+					     WHERE `tl_mcsp_smallads`.`alias`=?")
+		                             ->limit(1)
+		     			     ->execute($this->Input->get('anzeige'));
+		   
+		   $this->setCookie('categories', $adObj->pid, $cookieLifeTime); 
+		   $actCategory = $adObj->pid;
+		   
+		   $this->setCookie('subcategories',$adObj->catalias,$cookieLifeTime);		   
+		   $subcat = $adObj->catalias;		    		   
+		   		     
+		}		
+		$objCats = $this->Database->prepare("SELECT * FROM `tl_mcsp_categories` WHERE `active`='1' AND `pid`=0 ORDER BY `sorting`")
+					  ->execute();
 	    
 		if ($objCats->numRows < 1)
 		{
@@ -141,7 +173,7 @@ class ModuleCategorieMenu extends Module
 		        'detailurl' => $this->urlEncode($myHelper->createURL('id',$this->mcsp_categories_jumpTo,'Kategorie='.$objCats->alias,'',true,false)),
 			'class'=> strcmp($subcat,$objCats->alias)==0?'active':'normal'
 		      );
-		      if($this->mcsp_ignore_filter)
+		      if(!$this->mcsp_ignore_filter)
 		      {
 			  if($subdata['subactive']) $JSOptionShowActive = $indexer; 
 			  if(strcmp($objCats->id,$actCategory)==0) $JSOptionShowActive = $indexer; 

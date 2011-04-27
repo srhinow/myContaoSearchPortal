@@ -1,5 +1,5 @@
 <!-- indexer::stop -->
-<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<div class="<?php echo $this->class; ?><?php echo $this->hightlightClass; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
        <h1><?php echo $this->title; ?></h1>
        <div class="inforow">
 	   <div class="article_number">Anzeigen-Nr.: <?php echo $this->adid; ?></div>
@@ -12,7 +12,7 @@
 	      <div id="bigpic" style="width:<?php echo $this->bicpicWidth; ?>px; height:<?php echo $this->bicpicHeight; ?>px;">
 	         <ul>
 	         <?php foreach($this->bicpics as $k => $bicpic): ?>
-	           <li><div class="imgitem" style="width:">
+	           <li><div class="imgitem" style="width:<?php echo $this->bicpicWidth; ?>px; height:<?php echo $this->bicpicHeight; ?>px;">
 		       <a href="<?php echo  $this->layer_imgsrc[$k]; ?>" class="img normal" rel="lightbox[<?php echo $this->moduleId; ?>]"><img src="<?php echo $bicpic; ?>" alt="" width="<?php echo $this->bicpicWidth; ?>" height="<?php echo $this->bicpicHeight; ?>" /></a>
 		       <a href="<?php echo  $this->layer_imgsrc[$k]; ?>" class="detail_glas" rel="lightbox[<?php echo $this->moduleId; ?>]"><img src="tl_files/mein-anzeigenportal/images/plus_glas.png" alt=""/></a>
 		       </div>
@@ -42,7 +42,9 @@
 	   <h3>Beschreibung</h3>
 	    <?php echo $this->text; ?>
 	</div><!--.description--> 
-	  
+	<?php if($this->isLink):?>
+	<p><strong>Website:</strong>&nbsp;<a href="<?php echo $this->linkUrl; ?>" target="_blank"><?php echo $this->linkText; ?></a></p>
+	<?php endif; ?>  
 	<a href="<?php echo $this->backlink; ?>" class="backlink">Zurück zur Liste</a>
 </div>
 <!-- indexer::continue -->
