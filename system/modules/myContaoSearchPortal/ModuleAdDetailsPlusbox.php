@@ -90,8 +90,7 @@ class ModuleAdDetailsPlusbox extends Module
 		$GLOBALS['TL_MOOTOOLS'][] = '<div id="overLay"></div><div id="layer"><div id="closeBtn"></div><div id="layercontent"></div></div><!--#layer-->';
 		$GLOBALS['TL_MOOTOOLS'][] = '<script type="text/javascript">
 		<!--//--><![CDATA[//><!--
-		window.addEvent(\'domready\', function() {
-		      
+		window.addEvent(\'domready\', function() {		      
 		    $$("a.cllshare").addEvent("click", function(event){
 		      event.stop();
 		      var share = new  myLayer({
@@ -107,8 +106,7 @@ class ModuleAdDetailsPlusbox extends Module
 			    layerWidth:300,
 			    layerHeight:550		    		      
 		      }).open(this);			
-
-		     });
+		    });
 		    $$("a.cllreport").addEvent("click", function(event){
 		        event.stop();
 			var report = new  myLayer({
