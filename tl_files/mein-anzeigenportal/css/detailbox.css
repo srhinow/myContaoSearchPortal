@@ -177,3 +177,6 @@
 .detailbox .plusbox li.reporting a{
     background:url('../images/tool_icon_sprite.png') no-repeat 0 -202px transparent;
 }
+.pdf_link{
+    padding-left: 200px;
+}

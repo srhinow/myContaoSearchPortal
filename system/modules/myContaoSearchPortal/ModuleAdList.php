@@ -25,7 +25,7 @@
 /**
  * Class ModuleVouchersLatest
  *
- * @copyright  sr-tag 2010 
+ * @copyright  sr-tag 2011 
  * @author     Sven Rhinow <support@sr-tag.de>
  * @package    Controller
  */
@@ -77,12 +77,16 @@ class ModuleAdList extends Module
 	protected function compile()
 	{
 		$this->import('String');
+		$cookieLifeTime = time()+3600*24*7;
 		
 		$myHelper = new myPortalHelper;
 		
                 $searchWhereArr = array();
                 $searchWhereStr  = '';
 
+                //aktuelle Listen-Url in Cookie speichern
+                $this->setCookie('aktlisturl',$this->Environment->url.$this->Environment->requestUri,$cookieLifeTime);
+                
                 //Suchanfragen berücksichtigen
                 if(!$this->mcsp_ignore_filter)
                 {

@@ -101,7 +101,7 @@
 }
 .detailbox .right h5{
     font-size:15px;
-    margin: 0;
+    margin: 5px 0 0 0;
     padding:0;
 }
 .detailbox .right .phonenumber{
@@ -176,4 +176,7 @@
 }
 .detailbox .plusbox li.reporting a{
     background:url('../images/tool_icon_sprite.png') no-repeat 0 -202px transparent;
+}
+.pdf_link{
+    
 }

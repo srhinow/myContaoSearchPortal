@@ -27,6 +27,9 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_searchbar']  = 'name,type;mcsp
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adlist']  = 'name,type;mcsp_template,mcsp_type;mcsp_detail_jumpTo,mcsp_categories_jumpTo,mcsp_css_file;mcsp_count,mcsp_title_maxlength,mcsp_text_maxlength,mcsp_more_str,mcsp_img_size,mcsp_ignore_filter,mcsp_only_with_img';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailsbig']  = 'name,type;mcsp_template;mcsp_css_file;mcsp_img_size,mcsp_thumb_size,mcsp_max_size;mcsp_video_width,mcsp_video_height';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailssidebar']  = 'name,headline,type;mcsp_template;mcsp_css_file';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailsplusbox']  = 'name,headline,type;mcsp_template;mcsp_css_file,mcsp_wishlist_jumpTo,mcsp_print_jumpTo,mcsp_share_jumpTo,mcsp_reporting_jumpTo';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adshareform']  = 'name,headline,type;mcsp_template,mcsp_detail_jumpTo;mcsp_css_file;mcsp_email_fromAddress,mcsp_email_fromText,mcsp_email_subject,mcsp_email_text,mcsp_email_success';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adreportform']  = 'name,headline,type;mcsp_template,mcsp_detail_jumpTo;mcsp_css_file;mcsp_email_fromAddress,mcsp_email_fromText,mcsp_email_toAddress,mcsp_email_subject,mcsp_email_text,mcsp_email_success';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 (
@@ -49,7 +52,38 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 		'eval'                    => array('fieldType'=>'radio','tl_class'=>'clr'),
 		'explanation'             => 'jumpTo'
 	),
-
+	'mcsp_wishlist_jumpTo' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_wishlist_jumpTo'],
+		'exclude'                 => true,
+		'inputType'               => 'pageTree',
+		'eval'                    => array('fieldType'=>'radio','tl_class'=>'clr'),
+		'explanation'             => 'jumpTo'
+	),
+	'mcsp_print_jumpTo' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_print_jumpTo'],
+		'exclude'                 => true,
+		'inputType'               => 'pageTree',
+		'eval'                    => array('fieldType'=>'radio','tl_class'=>'clr'),
+		'explanation'             => 'jumpTo'
+	),
+	'mcsp_share_jumpTo' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_share_jumpTo'],
+		'exclude'                 => true,
+		'inputType'               => 'pageTree',
+		'eval'                    => array('fieldType'=>'radio','tl_class'=>'clr'),
+		'explanation'             => 'jumpTo'
+	),
+	'mcsp_reporting_jumpTo' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_reporting_jumpTo'],
+		'exclude'                 => true,
+		'inputType'               => 'pageTree',
+		'eval'                    => array('fieldType'=>'radio','tl_class'=>'clr'),
+		'explanation'             => 'jumpTo'
+	),			
 	'mcsp_count' => array
 	(
 		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_count'],
@@ -104,7 +138,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email'],
 		'exclude'                 => true,		
 		'inputType'               => 'text',
-		'eval'			=> array('tl_class'=>'w50')
+		'eval'			=> array('tl_class'=>'w50','rgxp'=>'email')
 	),
 
 	'mcsp_title_maxlength' => array
@@ -209,7 +243,63 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 		'exclude'                 => true,
 		'inputType'               => 'fileTree',
 		'eval'                    => array('fieldType'=>'checkbox', 'files'=>true, 'filesOnly'=>true, 'mandatory'=>false)
-	),				
+	),
+	'mcsp_email_fromAddress' =>  array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_fromAddress'],
+		'exclude'                 => false,		
+		'inputType'               => 'text',
+		'eval'			=> array('mandatory'=>true, 'tl_class'=>'w50','rgxp'=>'email')
+	),
+
+	'mcsp_email_fromText' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_fromText'],
+		'exclude'                 => false,
+		'inputType'               => 'text',
+		'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'alnum')
+	),					
+	'mcsp_email_toAddress' =>  array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_toAddress'],
+		'exclude'                 => false,		
+		'inputType'               => 'text',
+		'eval'			=> array('mandatory'=>true, 'tl_class'=>'w50','rgxp'=>'email')
+	),
+	'mcsp_email_toText' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_toText'],
+		'exclude'                 => false,
+		'inputType'               => 'text',
+		'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'alnum')
+	),					
+	'mcsp_email_subject' =>  array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_subject'],
+		'exclude'                 => false,		
+		'inputType'               => 'text',
+		'eval'			=> array('mandatory'=>true,'tl_class'=>'long')
+	),
+	'mcsp_email_text' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_text'],
+		'exclude'                 => false,
+		'filter'                  => false,
+		'search'                  => false,
+		'inputType'               => 'textarea',
+		'eval'                    => array('mandatory'=>true, 'cols'=>'5','rows'=>'30','rte'=>false,'allowHtml'=>true),			
+		
+	),
+	'mcsp_email_success' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_success'],
+		'exclude'                 => false,
+		'filter'                  => false,
+		'search'                  => false,
+		'inputType'               => 'textarea',
+		'eval'                    => array('mandatory'=>true, 'cols'=>'5','rows'=>'30','rte'=>false,'allowHtml'=>true),			
+		
+	),					
 		
 ));
 

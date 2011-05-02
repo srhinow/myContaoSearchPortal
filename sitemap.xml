@@ -3,11 +3,15 @@
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/startseite.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/angebote.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/angebotdetails.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/print-details.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/weiterempfehlen.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/betrug-melden.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/angebot-anzeigen.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/gesuche.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/gesuchdetails.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/gesuch-anzeigen.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/top-navigation.html</loc></url>
+  <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/merkliste.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/login.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/registrierung.html</loc></url>
   <url><loc>http://mein-anzeigenportal.local/portal_cms/index.php/hilfe.html</loc></url>

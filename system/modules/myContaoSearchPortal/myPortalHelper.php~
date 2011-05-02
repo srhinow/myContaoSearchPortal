@@ -207,7 +207,7 @@ class myPortalHelper extends Frontend
 
 	//netto berechen
 	public function netto($wert) {
-  	return number_format($wert / (100 + MWST) * 100, 2, '.', '');
+	    return number_format($wert / (100 + MWST) * 100, 2, '.', '');
 	}
 			
 	/**
@@ -318,6 +318,17 @@ class myPortalHelper extends Frontend
 	     $pointObj = $this->Database->prepare('SELECT `zc_id` FROM zip_coordinates WHERE `zc_zip`= ? AND `zc_location_name` = ?')->limit(1)->execute($parts[0],$parts[1]); 
 	     
 	     return $pointObj->zc_id;
+	}
+	
+	public function checkLink($link) {
+		if (substr($link, 0, 7) == 'http://' || substr($link, 0, 8) == 'https://')
+			return $link;
+		else {
+			if (substr($link, 0, 4) == 'www.')
+				return 'http://' . $link;
+			else
+				return 'http://www.' . $link;
+		}
 	}
 }     
 ?>

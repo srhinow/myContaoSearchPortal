@@ -1,0 +1,32 @@
+#overLay{
+	position: fixed;
+	z-index: 9998;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	cursor: pointer;
+/* 		border:3px solid #f00; */
+}
+#layer{
+    position:fixed;
+    z-index: 9999;
+    height:500px;
+    width:830px;
+    display:none;
+/*     background-color: #fff; */
+}
+
+#closelayer {
+	position:fixed;
+/*	right:10px;
+	top:10px;*/
+	width: 21px;
+	height:21px;
+	margin-left:850px;
+	margin-top:10px;
+	background: transparent url('../images/layer_CloseBtn.png') no-repeat center;
+	z-index: 10000;
+	cursor: pointer;
+}

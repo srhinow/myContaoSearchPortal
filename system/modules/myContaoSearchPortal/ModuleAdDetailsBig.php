@@ -152,7 +152,8 @@ class ModuleAdDetailsBig extends Module
 		$this->Template->category = $resultObj->catname;		
 		$this->Template->price = $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement);
 		$this->Template->humandate = $myHelper->getHumandate($resultObj->createdate);
-		$this->Template->backlink = $this->getReferer();
+		if(strlen($this->Input->cookie('aktlisturl'))) $this->Template->backlink = $this->Input->cookie('aktlisturl');
+		else $this->Template->backlink = $this->getReferer();
 		    
 
                 if(strlen($this->mcsp_css_file)>0) 

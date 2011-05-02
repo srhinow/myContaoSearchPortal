@@ -33,4 +33,9 @@ $GLOBALS['TL_LANG']['FMD']['mcsp_searchbarcategories'] = array('Kategorien in de
 $GLOBALS['TL_LANG']['FMD']['mcsp_breadcrumb'] = array('Navigationspfad', 'zur besseren Orientierung des Besuchers über den momentanen Offenthalt');
 $GLOBALS['TL_LANG']['FMD']['mcsp_searchbar'] = array('Anzeigen-Suche', '');
 $GLOBALS['TL_LANG']['FMD']['mcsp_adlist'] = array('Anzeigen-Liste', '');
+
+$GLOBALS['TL_LANG']['FMD']['mcsp_addetailsbig'] = array('Anzeige-Details (Hauptbereich)', '');
+$GLOBALS['TL_LANG']['FMD']['mcsp_addetailssidebar'] = array('Anzeige-Details (Sidebar)', '');
+$GLOBALS['TL_LANG']['FMD']['mcsp_addetailsplusbox'] = array('Anzeigen-PlusBox', 'mit Druck-, melden-, weiterempfehlen und Merklistenlink');
+$GLOBALS['TL_LANG']['FMD']['mcsp_adshareform'] = array('Weiterempfehlen-Formular', '');
 ?>

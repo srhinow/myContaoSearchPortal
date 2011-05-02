@@ -53,8 +53,8 @@ $GLOBALS['TL_CONFIG']['allowedTags'] = '<a><abbr><acronym><address><area><b><big
 $GLOBALS['TL_CONFIG']['dateFormat'] = 'd.m.Y';
 $GLOBALS['TL_CONFIG']['datimFormat'] = 'd.m.Y H:i';
 $GLOBALS['TL_CONFIG']['websitePath'] = '/portal_cms';
-$GLOBALS['TL_CONFIG']['cron_weekly'] = 201117;
-$GLOBALS['TL_CONFIG']['cron_daily'] = 20110427;
+$GLOBALS['TL_CONFIG']['cron_weekly'] = 201118;
+$GLOBALS['TL_CONFIG']['cron_daily'] = 20110502;
 ### INSTALL SCRIPT STOP ###
 
 ?>

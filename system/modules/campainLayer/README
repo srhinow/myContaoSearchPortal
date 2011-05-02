@@ -1,0 +1,17 @@
+Author: Sven Rhinow
+Web: www.sr-tag.de
+License: LPGL (mit Ausnahmen)
+Version: 0.4
+Ausnahmen: Ich verbiete die Benutzung dieser Software für die Firma rokamedia und deren Personen
+
+deutsch
+--------------------------------------
+dieses Contao-Modul stellt die Möglichkeit zur Verfügung ein Layer in verschiedenen Arten anzuzeigen
+
+- durch klick auf eine Schaltfläche
+- aufruf beim betreten der Seite
+- übergabe von bestimmten get-Parametern
+- die Anzeige kann durch Cookie setzen auch limitiert werden
+- der Inhalt des Layers kann absolute flexible gestaltet werden da es den im Modul eingetragenen Text anzeigt und auch mit inserttags auf Artikel, Inhaltselemente und Module gesteuert werden kann
+
+Vorraussetzung: dieses Modul basiert auf das Mootools-Framework

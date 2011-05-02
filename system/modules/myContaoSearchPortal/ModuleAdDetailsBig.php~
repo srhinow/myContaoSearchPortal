@@ -149,10 +149,10 @@ class ModuleAdDetailsBig extends Module
 		$this->Template->isLink = ($resultObj->is_link == 1)? true : false;
 		$this->Template->linkText = strip_tags($resultObj->link_text);
 		$this->Template->linkUrl = $myHelper->checkLink($resultObj->link_url);
-		$this->Template->category = $resultObj->catname;
-		$this->Template->hightlightClass = ($resultObj->is_hightlight == 1)? ' hightlight ' : '';
+		$this->Template->category = $resultObj->catname;		
 		$this->Template->price = $myHelper->getPriceString($resultObj->price,$resultObj->basic_agreement);
 		$this->Template->humandate = $myHelper->getHumandate($resultObj->createdate);
+		if(strlen($this->Input->cookie('aktlisturl'))) $this->Template->backlink = $this->Input->cookie('aktlisturl');
 		$this->Template->backlink = $this->getReferer();
 		    
 

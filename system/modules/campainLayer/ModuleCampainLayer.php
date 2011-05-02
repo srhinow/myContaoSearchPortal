@@ -1,0 +1,151 @@
+<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+
+/**
+ * TYPOlight webCMS
+ * Copyright (C) 2005-2009 Leo Feyer
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, please visit the Free
+ * Software Foundation website at http://www.gnu.org/licenses/.
+ *
+ * PHP version 5
+ */
+
+
+/**
+ * Class ModuleVouchersLatest
+ *
+ * @copyright  sr-tag 2011 
+ * @author     Sven Rhinow <support@sr-tag.de>
+ * @package    KampagnenLayer 
+ */
+class ModuleCampainLayer extends Module
+{
+	/**
+	 * Template
+	 * @var string
+	 */
+	protected $strTemplate = 'mod_campain_layer';
+
+
+	/**
+	 * Target pages
+	 * @var array
+	 */
+	protected $arrTargets = array();
+
+        /**
+        * show files and layer
+        * @var bool
+        */
+        protected $show = false;
+        
+                
+	/**
+	 * Display a wildcard in the back end
+	 * @return string
+	 */
+	public function generate()
+	{
+		if (TL_MODE == 'BE')
+		{
+			$objTemplate = new BackendTemplate('be_wildcard');
+
+			$objTemplate->wildcard = '### KAMPAGNEN-LAYER ('.$this->cl_substr.') ###';
+
+			$objTemplate->title = $this->headline;
+			$objTemplate->id = $this->id;
+			$objTemplate->link = $this->name;
+			$objTemplate->href = 'typolight/main.php?do=modules&amp;act=edit&amp;id=' . $this->id;
+
+			return $objTemplate->parse();
+		}
+                // Fallback template
+		#if (strlen($this->cnt_template)) $this->strTemplate = $this->cnt_template;
+
+		return parent::generate();
+	}
+
+
+	/**
+	 * Generate module
+	 */
+	protected function compile()
+	{
+	
+           //sucht in den Get-Keys nach einer bestimmten Teil-Zeichenkette           
+           $pos = false;
+                                
+           if(count($_GET)>0) 
+	   {
+	       
+	       foreach($_GET AS $k => $v) 
+               {		  
+		   $k = strip_tags(trim($k));
+		   $pos = strcmp($k,$this->cl_substr)==0 ? true : false;
+		   		  
+               }
+           }           
+           if($pos) $this->show = true;
+           
+           //Modul-Flag fuer "keine Parameter notwendig" pruefen
+           if($this->cl_no_param) $this->show = true;
+           
+           //Cookie
+           if($this->cl_set_cookie && $this->show)
+           {
+	       
+	       //Name des Cookies
+	       if(!$this->cl_cookie_name) $this->cl_cookie_name = 'LAYER_'.$this->id.'_COOKIE';
+	       
+	       if(!$this->Input->cookie($this->cl_cookie_name))
+	       {
+		   if(!$this->cl_cookie_dauer) $this->cl_cookie_dauer = 3600;
+		   $this->setCookie($this->cl_cookie_name,1,time()+$this->cl_cookie_dauer);
+		   
+	       }else $this->show = false;
+           }
+           
+           // nur wenn Fund dann CSS, JS und HTML einfuegen
+           if($this->show)
+           {
+		$layerName = $this->cl_substr;
+		
+		$objTemplate = new FrontendTemplate($this->cl_template);
+		$objTemplate->content = $this->cl_content;
+		$templateHTML = $objTemplate->parse();
+		
+		$GLOBALS['TL_CSS'][] = 'system/modules/campainLayer/html/css/campain_layer.css';
+		//eigene CSS-Auszeichnungen aus CSS-Datei
+		if($this->cl_css_file) $GLOBALS['TL_CSS'][] = $this->cl_css_file;
+		$GLOBALS['TL_MOOTOOLS'][] = $templateHTML;		
+		$GLOBALS['TL_MOOTOOLS'][] = '<script type="text/javascript" src="system/modules/campainLayer/html/js/campainLayer_mootools.js"></script>';
+		$GLOBALS['TL_MOOTOOLS'][] = '
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+window.addEvent(\'domready\', function() {
+    var ml = new  myLayer({
+        '.(is_numeric($this->cl_option_layerwidth)?'layerWidth:'.$this->cl_option_layerwidth.',':'').'
+        '.(is_numeric($this->cl_option_layerheight)?'layerHeight:'.$this->cl_option_layerheight.',':'').'
+        '.$this->cl_option_other.' 
+    });
+    });
+    //--><!]]>    
+    </script>';
+   		
+	   }
+	   	  	   
+	}
+
+}
+
+?>

@@ -6,7 +6,7 @@
 # Contao Version   : 2.9 Build 4
 #
 # Saved by User    : mcspadmin (sven)
-# Time stamp       : 2011-04-27 at 20:27:07
+# Time stamp       : 2011-04-29 at 13:17:09
 #
 # Contao Extension : BackupDB, Version 1.2.0
 # Copyright        : Softleister (www.softleister.de)
@@ -20,6 +20,7 @@
 #------------------------------------------
   - tags
   - myContaoSearchPortal
+  - campainLayer
   - auto_completer
 
 #------------------------------------------

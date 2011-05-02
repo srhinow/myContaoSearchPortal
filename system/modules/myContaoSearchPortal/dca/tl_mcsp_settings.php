@@ -98,13 +98,14 @@ $GLOBALS['TL_DCA']['tl_mcsp_settings'] = array
 	'palettes' => array
 	(
 		'__selector__' => array('mail_customer'),
-		'default' => '{title_legend},name,sslorder,startadnumber;{currency_legend:hide},currency,currency_symbol;{standards_legend:hide},tax,duration,costumer_group,mailarticle,paymentarticle,paymentarticle2,shippingarticle,mailcss,shippingpage;{customermails_legend:hide},mail_customer_from,mail_customer_subject,mail_customer_attach'
+		'default' => '{title_legend},name,sslorder,startadnumber;{currency_legend:hide},currency,currency_symbol;{standards_legend:hide},tax,duration,costumer_group,mailarticle,paymentarticle,paymentarticle2,shippingarticle,mailcss,shippingpage;{customermails_legend:hide},mail_customer_from,mail_customer_subject,mail_customer_attach;{mail_addetailform:hide},mail_adform_fromEmail,mail_adform_fromText,mail_adform_subject,mail_adform_startText,mail_adform_endText,mail_adform_successText'
 	),
 
 	// Subpalettes
 	'subpalettes' => array
 	(
 		'mail_customer' => 'mail_customer_from,mail_customer_subject,mail_customer_attach',
+		'mail_addetailform' => 'mail_adform_fromEmail,mail_adform_fromText,mail_adform_subject,mail_adform_startText,mail_adform_endText,mail_adform_successText',
 	),
 
 	// Fields
@@ -194,6 +195,57 @@ $GLOBALS['TL_DCA']['tl_mcsp_settings'] = array
 			'foreignKey'              => 'tl_article.title',
 			'eval'                    => array('multiple'=>false, 'mandatory'=>false, 'includeBlankOption'=>true)
 		),
+		'mail_adform_fromEmail' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_settings']['mail_adform_fromEmail'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true, 'rgxp'=>email )
+		),
+		'mail_adform_fromText' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_settings']['mail_adform_fromText'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true )
+		),
+		'mail_adform_subject' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_settings']['mail_adform_subject'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true,'tl_class'=>'long')
+		),
+		'mail_adform_startText' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['mail_adform_startText'],
+			'exclude'                 => true,
+			'filter'                  => false,
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array('mandatory'=>true, 'cols'=>'5','rows'=>'30','rte'=>false,'allowHtml'=>false),			
+			
+		),
+		'mail_adform_endText' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['mail_adform_endText'],
+			'exclude'                 => true,
+			'filter'                  => false,
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array('mandatory'=>true, 'cols'=>'5','rows'=>'30','rte'=>false,'allowHtml'=>false),			
+			
+		),
+		'mail_adform_successText' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_smallads']['mail_adform_successText'],
+			'exclude'                 => true,
+			'filter'                  => false,
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array('mandatory'=>true, 'cols'=>'5','rows'=>'30','rte'=>false,'allowHtml'=>false),			
+			
+		),						
 		'paymentarticle' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_mcsp_settings']['paymentarticle'],

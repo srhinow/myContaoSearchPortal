@@ -277,7 +277,7 @@ class myPortalHelper extends Frontend
 	    $resultObj = $this->Database->prepare('SELECT * FROM `tl_mcsp_settings`')
 		    ->limit(1)
 		    ->execute();
-	    $this->portalSettings = $resultObj;	
+	    $this->portalSettings = $resultObj;	    	
 	}
 	
 	/**
