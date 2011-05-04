@@ -108,13 +108,35 @@ class ModuleAdList extends Module
 			if(strlen($this->Input->post('categories')))
 			{
 			    $actCategory = $this->Input->post('categories');
+			    if($this->Input->post('categories')=='0') $actCategory='';
 			}
 			else{
 			    $actCategory = $this->Input->cookie('categories');		
 			}
 				       
-			if(strlen($actCategory)) $searchWhereArr[] = "`tl_mcsp_categories`.`pid` = '".$actCategory."'";
+			if(strlen($actCategory)) $searchWhereArr[] = "`tl_mcsp_categories`.`pid` = '".$actCategory."'";		    
+		    }
 		    
+		    //only ads from explicide radius
+		    if($this->Input->post('plz_ort'))
+		    {			  
+			  //get extract zip and city part from plz_ort-string
+			  $parts = explode(' ',$this->Input->post('plz_ort'));
+			  
+			  //get geo-daten from city
+			  $geoObj = $this->Database->prepare('SELECT * FROM `zip_coordinates` WHERE `zc_zip`= ? AND `zc_location_name` = ?')
+						  ->limit(1)
+						  ->execute($parts[0],$parts[1]);
+			  if($geoObj->numRows > 0)
+			  {
+			      $searchWhereArr[] = "ACOS( SIN(RADIANS(zc_lat)) * SIN(RADIANS(".$geoObj->zc_lat.")) + COS(RADIANS(zc_lat)) * COS(RADIANS(".$geoObj->zc_lat.")) * COS(RADIANS(zc_lon) - RADIANS(".$geoObj->zc_lon."))) * 6380 <= ".$this->Input->post('radius');
+			  }
+		    }
+		    
+		    //only ads with posted keyword
+		    if($this->Input->post('keyword'))
+		    {
+			$searchWhereArr[] = "(`tl_mcsp_smallads`.`adid` LIKE '%%".$this->Input->post('keyword')."%%' OR `tl_mcsp_smallads`.`title` LIKE '%%".$this->Input->post('keyword')."%%' OR `tl_mcsp_smallads`.`description` LIKE '%%".$this->Input->post('keyword')."%%' OR `tl_mcsp_categories`.`name` LIKE '%%".$this->Input->post('keyword')."%%' )";
 		    }
 		    
 
@@ -126,12 +148,32 @@ class ModuleAdList extends Module
 		if(count($searchWhereArr)>0) $searchWhereStr = " AND ".implode(' AND ',$searchWhereArr);                
 		
                 //Daten holen
+                if($geoObj->numRows > 0)
+                {							
 		$resultObj = $this->Database->prepare("SELECT `tl_mcsp_smallads`.*,
 							`tl_mcsp_categories`.`name` AS `catname`,
 							`tl_mcsp_categories`.`alias` AS `catalias`,
 							`zip_coordinates`.`zc_zip` AS `plz`,
-							`zip_coordinates`.`zc_location_name` AS `city`
-							FROM `tl_mcsp_smallads`		 
+							`zip_coordinates`.`zc_location_name` AS `city`,
+							ACOS(SIN(RADIANS(zc_lat)) * SIN(RADIANS(".$geoObj->zc_lat.")) + COS(RADIANS(zc_lat)) * COS(RADIANS(".$geoObj->zc_lat.")) * COS(RADIANS(zc_lon)- RADIANS(".$geoObj->zc_lon."))) * 6380 AS `distance`
+							FROM `tl_mcsp_smallads`																 
+							LEFT JOIN `tl_mcsp_states` ON `tl_mcsp_smallads`.`stateid` = `tl_mcsp_states`.`id`
+							LEFT JOIN `tl_mcsp_categories` ON `tl_mcsp_smallads`.`categoryid` = `tl_mcsp_categories`.`id`
+							LEFT JOIN `zip_coordinates` ON `tl_mcsp_smallads`.`zc_id` = `zip_coordinates`.`zc_id`
+							WHERE `tl_mcsp_states`.`value`='1'
+							".$searchWhereStr."							
+							ORDER BY `distance` ASC ")
+					    ->limit($this->mcsp_count)
+					    ->execute();			    
+		}
+		else
+		{
+		$resultObj = $this->Database->prepare("SELECT `tl_mcsp_smallads`.*,
+							`tl_mcsp_categories`.`name` AS `catname`,
+							`tl_mcsp_categories`.`alias` AS `catalias`,
+							`zip_coordinates`.`zc_zip` AS `plz`,
+							`zip_coordinates`.`zc_location_name` AS `city`							
+							FROM `tl_mcsp_smallads`																 
 							LEFT JOIN `tl_mcsp_states` ON `tl_mcsp_smallads`.`stateid` = `tl_mcsp_states`.`id`
 							LEFT JOIN `tl_mcsp_categories` ON `tl_mcsp_smallads`.`categoryid` = `tl_mcsp_categories`.`id`
 							LEFT JOIN `zip_coordinates` ON `tl_mcsp_smallads`.`zc_id` = `zip_coordinates`.`zc_id`
@@ -139,7 +181,8 @@ class ModuleAdList extends Module
 							".$searchWhereStr."							
 							ORDER BY `createdate` DESC ")
 					    ->limit($this->mcsp_count)
-					    ->execute();			    
+					    ->execute();			    		
+		}
 		if ($resultObj->numRows < 1)
 		{
 			$this->Template->items = array();

@@ -98,7 +98,7 @@ class ModuleAdReportForm extends Module
                 $inputJustfication = new FormSelectMenu();
 		$inputJustfication->id = 'justification';
 		$inputJustfication->name = 'justification';
-		$inputJustfication->label = '';
+		$inputJustfication->label = 'Anlass';
 		$inputJustfication->mandatory = true;				
 		$inputJustfication->options = array( 
 		    array('value'=>'', 'label'=>' bitte auswählen'),

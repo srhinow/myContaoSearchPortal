@@ -36,6 +36,7 @@ CREATE TABLE `tl_module` (
      `mcsp_print_jumpTo` smallint(5) unsigned NOT NULL default '0',
      `mcsp_share_jumpTo` smallint(5) unsigned NOT NULL default '0',
      `mcsp_reporting_jumpTo` smallint(5) unsigned NOT NULL default '0',
+     `mcsp_alternate_text` text NULL,
      `mcsp_email_fromAddress` varchar(255) NOT NULL default '',
      `mcsp_email_fromText` varchar(255) NOT NULL default '',
      `mcsp_email_toAddress` varchar(255) NOT NULL default '',
@@ -43,6 +44,8 @@ CREATE TABLE `tl_module` (
      `mcsp_email_subject` varchar(255) NOT NULL default '',
      `mcsp_email_text` text NULL,
      `mcsp_email_success` text NULL,
+     `mcsp_next_jumpTo` smallint(5) unsigned NOT NULL default '0',
+     `mcsp_prev_jumpTo` smallint(5) unsigned NOT NULL default '0',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 

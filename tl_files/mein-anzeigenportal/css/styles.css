@@ -177,15 +177,100 @@ form.searchform input.submit:focus{
     margin:0 0 0 8px;
     width:785px;
 }
-
+.greybox{
+    background-color:#f9f9f9;
+    border:1px solid #acacac;
+    padding:10px;
+    margin:0 0 0 5px;
+    
+}
+.infotext{
+    background:url('../images/info.png') no-repeat 0px 0px transparent;
+/*     height:24px; */
+    font-size:14px;
+    line-height:24px;
+    padding:0 0 0 35px;
+}
+.infotext p{
+   padding:0;
+   margin:0;
+}
+/* Step 1*/
+.selectcat ul{
+    list-style:none;
+    font-size:12px;
+    padding:0;
+    margin: 2px 0;
+}
+.selectcat ul.catlist{
+    margin:20px 0 0 0;      
+}
+.selectcat li.parentcat{
+    float:left;
+    font-weight:bold;
+    padding:0;
+    margin:0 40px 0 10px;
+    min-height:200px;    
+}
+.selectcat li.parentcat li{
+    font-weight:normal;
+    padding:0;
+    margin:3px 0;
+}
+.selectcat li.parentcat li:hover{
+    background-color:#D1E096;
+}
+.prevnext_row{
+    position:relative;
+    min-height:40px;
+}
+.prevnext_row input.next{
+    background: url("../images/navi_icon_sprite.png") no-repeat scroll right -133px transparent;
+    border:none;
+    cursor:pointer;
+    font-size: 18px;
+    font-weight:bold;
+    color:#230099;
+    padding: 0 35px 5px 5px;
+    position:absolute;
+    right:10px;
+}
+.prevnext_row input.next:hover,
+.prevnext_row input.next:focus{
+   color:#8a0;
+   text-decoration:underline;
+}
+.detailbox .backlink {
+    background: url("../images/navi_icon_sprite.png") no-repeat scroll 0 -76px transparent;
+    display: block;
+    margin-top: 10px;
+    padding: 5px 0 5px 35px;
+}
+/*---------*/
 #footer{
     clear:both;
     margin:50px 0;
     border-top:1px solid #8a0;
+}
+.footprint{
+    text-align:center;
+    font-size:11px;
+    color:#666;
+}
+.footprint a{
+    color:#666;
+    text-decoration:underline;
 }
 .bold{
     font-weight:bold;
 }
 .clear{
     clear:both;
+}
+p.error{
+    color:red;
+    border: 1px solid red;
+    background-color: #fff;
+    margin:5px 10px;
+    padding:5px 10px;
 }

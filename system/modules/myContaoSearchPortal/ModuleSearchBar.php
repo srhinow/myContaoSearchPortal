@@ -96,7 +96,7 @@ class ModuleSearchBar extends Module
 		    $this->setCookie('keyword',$this->Input->post('keyword'),$cookieLifeTime);
 		    $this->setCookie('plz_ort',$this->Input->post('plz_ort'),$cookieLifeTime);
 		    $this->setCookie('radius',$this->Input->post('radius'),$cookieLifeTime);
-		    $this->setCookie('categories',$this->Input->post('categories'),$cookieLifeTime);
+		    $this->setCookie('categories',($this->Input->post('categories')=='0'?'':$this->Input->post('categories')),$cookieLifeTime);
 		    if(strcmp($this->Input->post('categories'),$this->Input->cookie('categories'))) $this->setCookie('subcategories','',-$cookieLifeTime);
 		    
 		    $keywordValue =  $this->Input->post('keyword');
@@ -156,7 +156,7 @@ class ModuleSearchBar extends Module
 		$inputRadius->class = 'select';
 		$inputRadius->value = $radiusValue;
 		$inputRadius->options = array( 
-		    array('value'=>'', 'label'=>'+ 0km'),
+		    array('value'=>'0', 'label'=>'+ 0km'),
 		    array('value'=>'10','label'=>'+ 10km'),
 		    array('value'=>'20','label'=>'+ 20km'),
 		    array('value'=>'50','label'=>'+ 50km'),
@@ -205,7 +205,7 @@ class ModuleSearchBar extends Module
 		}	
 		
 		$arrCats[] = array(
-		    'value' => '',
+		    'value' => '0',
 		    'label' => 'alle Kategorien'
 		);
 		

@@ -44,7 +44,9 @@
  $GLOBALS['TL_LANG']['tl_module']['mcsp_email_subject']      = array('Betreff', 'Betreff der versendeten Email');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_email_text']	     = array('E-Mailtext', 'je nach Modul wird dieser Text als Standartwert oder ausschließlich als Emailinhalt verwendet');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_email_success']      = array('Erfogreich versendet -Text', 'Text der nach erfolgreichem E-Mail-versand angezeigt wird.');
-  
+ $GLOBALS['TL_LANG']['tl_module']['mcsp_next_jumpTo']      = array('weiter zur Seite', 'die seite die als nächsten angezeigt werden soll');
+ $GLOBALS['TL_LANG']['tl_module']['mcsp_prev_jumpTo']      = array('zurück zur Seite', 'die seite die angezeigt werden soll wenn es zurück gehen soll');
+ 
 $GLOBALS['TL_LANG']['tl_module']['category_legend'] = 'Kategorie-Einstellung';
 $GLOBALS['TL_LANG']['tl_module']['countersite_legend'] = 'Zähler und Weiterleitungsseite';
 ?>

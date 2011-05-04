@@ -120,7 +120,23 @@ class ModuleAdDetailsPlusbox extends Module
 			    showNow: false, 
 			    overLayOpacity:0.7,
 			    layerWidth:300,
-			    layerHeight:400			    		      
+			    layerHeight:420			    		      
+		      }).open(this);
+                    });
+                    $$("a.cllwishlist").addEvent("click", function(event){
+		        event.stop();
+			var wishlist = new  myLayer({
+			    drawOverLay:false, 
+			    drawLayer:false, 
+			    drawContent: false, 
+			    drawCloseBtn:false, 
+			    drawMlIframe: true, 
+			    itemcount: 1, 
+			    mkLinkEvents:false, 
+			    showNow: false, 
+			    overLayOpacity:0.7,
+			    layerWidth:600,
+			    layerHeight:420			    		      
 		      }).open(this);
                     });
 		});

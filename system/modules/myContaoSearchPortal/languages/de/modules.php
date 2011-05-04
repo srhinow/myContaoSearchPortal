@@ -38,4 +38,8 @@ $GLOBALS['TL_LANG']['FMD']['mcsp_addetailsbig'] = array('Anzeige-Details (Hauptb
 $GLOBALS['TL_LANG']['FMD']['mcsp_addetailssidebar'] = array('Anzeige-Details (Sidebar)', '');
 $GLOBALS['TL_LANG']['FMD']['mcsp_addetailsplusbox'] = array('Anzeigen-PlusBox', 'mit Druck-, melden-, weiterempfehlen und Merklistenlink');
 $GLOBALS['TL_LANG']['FMD']['mcsp_adshareform'] = array('Weiterempfehlen-Formular', '');
+$GLOBALS['TL_LANG']['FMD']['mcsp_adreportform'] = array('Anzeige melden-Formular', '');
+$GLOBALS['TL_LANG']['FMD']['mcsp_adwishlist'] = array('Artikel-Merkliste', '');
+$GLOBALS['TL_LANG']['FMD']['mcsp_step1selectcategory'] = array('Schritt 1: Kategorie auswählen', '');
+
 ?>

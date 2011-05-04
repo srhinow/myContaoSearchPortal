@@ -41,9 +41,9 @@
  $GLOBALS['TL_LANG']['tl_module']['mcsp_email_fromText']     = array('Absender-Name', 'Name des Absenders.');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_email_toAddress']    = array('E-Mail (Empfänger)', 'die E-Mail-Adresse die als Empfänger dient.');
  $GLOBALS['TL_LANG']['tl_module']['mcsp_email_toText']       = array('Empfänger-Name', 'Name des Empfängers');
- $GLOBALS['TL_LANG']['tl_module']['mcsp_email_subject']       = array('Betreff', 'Betreff der versendeten Email');
- $GLOBALS['TL_LANG']['tl_module']['mcsp_email_text']       = array('E-Mailtext', 'je nach Modul wird dieser Text als Standartwert oder ausschließlich als Emailinhalt verwendet');
- $GLOBALS['TL_LANG']['tl_module']['mcsp_email_success']       = array('Erfogreich versendet -Text', 'Text der nach erfolgreichem E-Mail-versand angezeigt wird.');
+ $GLOBALS['TL_LANG']['tl_module']['mcsp_email_subject']      = array('Betreff', 'Betreff der versendeten Email');
+ $GLOBALS['TL_LANG']['tl_module']['mcsp_email_text']	     = array('E-Mailtext', 'je nach Modul wird dieser Text als Standartwert oder ausschließlich als Emailinhalt verwendet');
+ $GLOBALS['TL_LANG']['tl_module']['mcsp_email_success']      = array('Erfogreich versendet -Text', 'Text der nach erfolgreichem E-Mail-versand angezeigt wird.');
   
 $GLOBALS['TL_LANG']['tl_module']['category_legend'] = 'Kategorie-Einstellung';
 $GLOBALS['TL_LANG']['tl_module']['countersite_legend'] = 'Zähler und Weiterleitungsseite';

@@ -125,7 +125,7 @@ class ModuleSearchBar extends Module
 			$categoriesValue = $this->Input->cookie('categories');				
 		    }
 		}
-		//wenn die Kategorie ignoriert werden soll
+		//wenn die Kategorie ignoriert werden soll (Modul-Einstellung)
 		if($this->mcsp_ignore_filter)  $categoriesValue ='';
 		
                 //create Formfields
@@ -156,7 +156,7 @@ class ModuleSearchBar extends Module
 		$inputRadius->class = 'select';
 		$inputRadius->value = $radiusValue;
 		$inputRadius->options = array( 
-		    array('value'=>'', 'label'=>'+ 0km'),
+		    array('value'=>'0', 'label'=>'+ 0km'),
 		    array('value'=>'10','label'=>'+ 10km'),
 		    array('value'=>'20','label'=>'+ 20km'),
 		    array('value'=>'50','label'=>'+ 50km'),
@@ -205,7 +205,7 @@ class ModuleSearchBar extends Module
 		}	
 		
 		$arrCats[] = array(
-		    'value' => '',
+		    'value' => '0',
 		    'label' => 'alle Kategorien'
 		);
 		

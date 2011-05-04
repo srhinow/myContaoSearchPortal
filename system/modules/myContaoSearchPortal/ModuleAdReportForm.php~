@@ -157,7 +157,7 @@ class ModuleAdReportForm extends Module
 			$email->text = $this->mcsp_email_text;
 
 						
-			$email->sendTo($to_email);
+			$email->sendTo($this->mcsp_email_toAddress);
 			
 			//als gesendet markieren
 			/*$this->setCookie('success'.$adObj->id, 1, $cookieLifeTime);	*/					

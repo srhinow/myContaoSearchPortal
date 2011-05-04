@@ -24,12 +24,15 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_categoriesmenu']  = 'name,head
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_searchbar_categories']  = 'name,headline,type;mcsp_categories_template;space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_breadcrumb']  = 'name,headline,type;mcsp_breadcrumb_start;space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_searchbar']  = 'name,type;mcsp_template,mcsp_type,mcsp_sb_min_characters,mcsp_sb_max_characters,mcsp_detail_jumpTo,mcsp_ignore_filter,mcsp_del_cookie';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adlist']  = 'name,type;mcsp_template,mcsp_type;mcsp_detail_jumpTo,mcsp_categories_jumpTo,mcsp_css_file;mcsp_count,mcsp_title_maxlength,mcsp_text_maxlength,mcsp_more_str,mcsp_img_size,mcsp_ignore_filter,mcsp_only_with_img';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adlist']  = 'name,type;mcsp_template,mcsp_type;mcsp_detail_jumpTo,mcsp_categories_jumpTo,mcsp_css_file;mcsp_count,mcsp_title_maxlength,mcsp_text_maxlength,mcsp_more_str,mcsp_img_size,mcsp_ignore_filter,mcsp_only_with_img;mcsp_alternate_text';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailsbig']  = 'name,type;mcsp_template;mcsp_css_file;mcsp_img_size,mcsp_thumb_size,mcsp_max_size;mcsp_video_width,mcsp_video_height';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailssidebar']  = 'name,headline,type;mcsp_template;mcsp_css_file';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_addetailsplusbox']  = 'name,headline,type;mcsp_template;mcsp_css_file,mcsp_wishlist_jumpTo,mcsp_print_jumpTo,mcsp_share_jumpTo,mcsp_reporting_jumpTo';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adshareform']  = 'name,headline,type;mcsp_template,mcsp_detail_jumpTo;mcsp_css_file;mcsp_email_fromAddress,mcsp_email_fromText,mcsp_email_subject,mcsp_email_text,mcsp_email_success';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adreportform']  = 'name,headline,type;mcsp_template,mcsp_detail_jumpTo;mcsp_css_file;mcsp_email_fromAddress,mcsp_email_fromText,mcsp_email_toAddress,mcsp_email_subject,mcsp_email_text,mcsp_email_success';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_adwishlist']  = 'name,headline,type;mcsp_template,mcsp_detail_jumpTo;mcsp_css_file;mcsp_title_maxlength,mcsp_text_maxlength,mcsp_more_str,mcsp_img_size';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_step1selectcategory']  = 'name,headline,type;mcsp_template,mcsp_next_jumpTo;space,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mcsp_step2givedata']  = 'name,headline,type;mcsp_template,mcsp_prev_jumpTo,mcsp_next_jumpTo;space,cssID';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 (
@@ -280,6 +283,16 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 		'inputType'               => 'text',
 		'eval'			=> array('mandatory'=>true,'tl_class'=>'long')
 	),
+	'mcsp_alternate_text' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_alternate_text'],
+		'exclude'                 => false,
+		'filter'                  => false,
+		'search'                  => false,
+		'inputType'               => 'textarea',
+		'eval'                    => array('mandatory'=>false, 'cols'=>'5','rows'=>'30','rte'=>false,'allowHtml'=>true),			
+		
+	),	
 	'mcsp_email_text' => array
 	(
 		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_email_text'],
@@ -299,6 +312,22 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'] , 2, array
 		'inputType'               => 'textarea',
 		'eval'                    => array('mandatory'=>true, 'cols'=>'5','rows'=>'30','rte'=>false,'allowHtml'=>true),			
 		
+	),
+	'mcsp_next_jumpTo' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_next_jumpTo'],
+		'exclude'                 => true,
+		'inputType'               => 'pageTree',
+		'eval'                    => array('fieldType'=>'radio','tl_class'=>'clr'),
+		'explanation'             => 'jumpTo'
+	),					
+	'mcsp_prev_jumpTo' => array
+	(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mcsp_prev_jumpTo'],
+		'exclude'                 => true,
+		'inputType'               => 'pageTree',
+		'eval'                    => array('fieldType'=>'radio','tl_class'=>'clr'),
+		'explanation'             => 'jumpTo'
 	),					
 		
 ));

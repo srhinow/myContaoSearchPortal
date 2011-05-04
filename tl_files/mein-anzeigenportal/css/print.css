@@ -1,0 +1,25 @@
+body{
+    font-family: 'Times' serif;
+    font-size:12px;
+}
+#header{
+    display:none;
+}
+.sidebar_left{
+    display:none;
+}
+#footer{
+    display:none;
+}
+.content{
+    width:100%;
+}
+.pdf_link{
+    display:none;
+}
+div.plusbox{
+    display:none;
+}
+.content .backlink{
+    display:none;
+}

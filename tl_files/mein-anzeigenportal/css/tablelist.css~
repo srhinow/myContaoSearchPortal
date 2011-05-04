@@ -23,6 +23,7 @@
 .tablelist table h3{
     margin:0;
     padding:0;
+    font-size: 14px;
 }
 .tablelist table td.imgbox{
     width:136px;
@@ -68,6 +69,16 @@
     color:#8a0;
     display:block;
 }
+.tablelist table td.price div{
+    position:relative;
+    height:80px;
+}
+.tablelist table td.price a.dellink{
+   position:absolute;
+   bottom:0;
+   right:0;
+   font-size:12px;
+}
 .tablelist table tr.hightlight{
     background-color: #EFFCBD;
 }
@@ -75,9 +86,10 @@
     font-size: 14px;
     color:#165016;
 }
-.tablelist table tr.hightlight td.price{
+.tablelist table tr.hightlight td.price a{
     color:#165016;
 }
+
 .tablelist a:visited{
     color:#909;
     text-decoration:none;

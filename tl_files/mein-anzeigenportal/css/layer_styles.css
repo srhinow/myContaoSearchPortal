@@ -108,6 +108,10 @@ p.error{
     padding-top:0;
     color:red;
 }
+.wishlist_overflow_content{
+    height:360px;
+    overflow:auto;
+}
 .bold{
     font-weight:bold;
 }
